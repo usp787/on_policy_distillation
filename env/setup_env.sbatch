@@ -16,7 +16,8 @@ module load cuda/12.8.0          # matches torch 2.8 cu128 build (Explorer modul
 module load miniconda3/25.9.1    # provides conda; 3.11 env fixes the math-verify >=3.10 floor
 
 eval "$(conda shell.bash hook)"  # enable `conda activate` in a non-interactive shell
-conda create -y -p "$HOME/.conda/envs/opd" python=3.11
+# Use conda-forge + --override-channels to avoid the Anaconda default-channel ToS gate.
+conda create -y -p "$HOME/.conda/envs/opd" -c conda-forge --override-channels python=3.11
 conda activate "$HOME/.conda/envs/opd"
 
 pip install --upgrade pip

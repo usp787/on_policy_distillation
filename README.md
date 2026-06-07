@@ -223,7 +223,7 @@ Python is 3.9, but `math-verify` requires ≥3.10, so we build a 3.11 conda env.
 module load cuda/12.8.0          # matches torch 2.8 cu128 build
 module load miniconda3/25.9.1    # 3.11 env clears the math-verify >=3.10 floor
 eval "$(conda shell.bash hook)"
-conda create -y -p "$HOME/.conda/envs/opd" python=3.11
+conda create -y -p "$HOME/.conda/envs/opd" -c conda-forge --override-channels python=3.11  # conda-forge avoids Anaconda ToS gate
 conda activate "$HOME/.conda/envs/opd"
 pip install --upgrade pip
 pip install -r requirements.txt
