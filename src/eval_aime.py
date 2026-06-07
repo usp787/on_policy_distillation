@@ -73,7 +73,10 @@ def main() -> None:
     p.add_argument("--model", required=True, help="HF id or local checkpoint path")
     p.add_argument("--bench", default="aime24,aime25",
                    help="comma-separated bench tags (must match data/<tag>.json)")
-    p.add_argument("--max-new-tokens", type=int, default=2048)
+    p.add_argument("--max-new-tokens", type=int, default=8192,
+                   help="8192 is the fixed ruler: at 2048 the 4B truncated ~37%+ of "
+                        "AIME solutions (16.7%% vs 43.3%% on aime25). Keep this constant "
+                        "across all phases so deltas are comparable.")
     p.add_argument("--k", type=int, default=1, help="samples per problem (avg@k)")
     p.add_argument("--temperature", type=float, default=0.0,
                    help="0 = greedy (use >0 with --k>1 for avg@k)")

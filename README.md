@@ -240,11 +240,15 @@ pip install flash-attn --no-build-isolation || echo "flash-attn skipped (optiona
 python -c "import torch, vllm, trl, transformers; print('torch', torch.__version__, 'cuda', torch.cuda.is_available())"
 ```
 
-Set a shared HF cache on a roomy filesystem so you don't blow the 80 GB job quota:
+Set the HF cache on **scratch**, not home — model weights (~24 GB for 4B+8B, +~29 GB
+if you add the 14B) will blow a home quota. On Explorer, `/scratch/$USER` has the room:
 
 ```bash
-export HF_HOME=$HOME/hf_cache          # put this in every sbatch, or in ~/.bashrc
+export HF_HOME=/scratch/$USER/hf_cache   # put this in every sbatch + ~/.bashrc
 ```
+
+Note: scratch is auto-purged after a period of inactivity — fine for an active project
+(weights re-touch each run), but re-download if you return after a long gap.
 
 ---
 
@@ -269,20 +273,28 @@ export HF_HOME=$HOME/hf_cache          # put this in every sbatch, or in ~/.bash
 
 Measure your own numbers for student + every candidate teacher on the *same* harness.
 `src/eval_aime.py`: load with vLLM, batch-generate (non-thinking,
-`max_new_tokens≈2048`, the boxed-answer prompt), score with `math-verify`, write
+`max_new_tokens=8192`, the boxed-answer prompt), score with `math-verify`, write
 `results/phase0_<model>.json`.
+
+> **Measured lesson (don't skip):** the token budget *is* the eval. At
+> `max_new_tokens=2048` the 4B scored **16.7%** on AIME'25 with ~37% of solutions
+> truncated before `\boxed{}`; at **8192** it scored **43.3%** (≈ the official ~47).
+> The 8B truncated 53–67% at 2048 — its 2048 number is pure noise. So the fixed
+> ruler is **8192**, and the same truncation logic forces the *training* completion
+> caps up too (see §9/§10) — a 1024 cap would zero out the reward signal.
 
 ```bash
 # slurm/phase0_eval.sbatch  (sketch — same #SBATCH header as setup)
-module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=$HOME/hf_cache
+module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=/scratch/$USER/hf_cache
 for M in Qwen/Qwen3-4B-Instruct-2507 Qwen/Qwen3-8B ; do
   python src/eval_aime.py --model "$M" --bench aime24,aime25 \
-         --max-new-tokens 2048 --out results/phase0
+         --max-new-tokens 8192 --out results/phase0
 done
 ```
 
 You now know the real student baseline and whether any teacher actually beats it.
-**This number is your ruler for Phases 1–3.**
+**This number is your ruler for Phases 1–3.** Measured 4B baseline (this harness,
+8192, greedy): AIME'25 **43.3%**.
 
 ---
 
@@ -317,7 +329,7 @@ cfg = GRPOConfig(
     use_vllm=True, vllm_mode="colocate",     # fast on-policy sampling on the same GPU
     num_generations=8,                       # group size G
     per_device_train_batch_size=8,
-    max_prompt_length=1024, max_completion_length=1024,
+    max_prompt_length=1024, max_completion_length=3072,  # 1024 truncates -> reward~0
     learning_rate=1e-6, max_steps=150, save_steps=50,
     bf16=True, gradient_checkpointing=True,
 )
@@ -327,7 +339,7 @@ GRPOTrainer(model=model, reward_funcs=math_reward, args=cfg,
 
 ```bash
 # slurm/phase1_grpo.sbatch  (#SBATCH: gpu:h200:1, time=08:00:00, mem=96G)
-module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=$HOME/hf_cache
+module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=/scratch/$USER/hf_cache
 python src/train_grpo.py --config configs/grpo.yaml
 python src/eval_aime.py --model checkpoints/phase1_grpo --bench aime24,aime25 --out results/phase1
 ```
@@ -357,7 +369,7 @@ cfg = GKDConfig(
     output_dir="checkpoints/phase2_distill",
     teacher_model_name_or_path="checkpoints/phase1_grpo",  # the RL'd 4B
     lmbda=1.0, beta=1.0, temperature=1.0,
-    max_new_tokens=1024,
+    max_new_tokens=2048,   # 1024 truncates most solutions (see §8); 2048 balances HF-generate speed
     per_device_train_batch_size=8, learning_rate=1e-6,
     max_steps=100, save_steps=25, bf16=True, gradient_checkpointing=True,
 )
@@ -367,7 +379,7 @@ GKDTrainer(model=student, args=cfg, train_dataset=ds,
 
 ```bash
 # slurm/phase2_distill.sbatch  (#SBATCH: gpu:h200:1, time=08:00:00, mem=96G)
-module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=$HOME/hf_cache
+module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=/scratch/$USER/hf_cache
 python src/train_gkd.py --config configs/gkd.yaml
 python src/eval_aime.py --model checkpoints/phase2_distill --bench aime24,aime25 --out results/phase2
 ```

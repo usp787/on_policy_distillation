@@ -31,4 +31,4 @@ python -c "import torch, vllm, trl, transformers; \
 print('torch', torch.__version__, 'cuda', torch.cuda.is_available()); \
 print('vllm', vllm.__version__, 'trl', trl.__version__, 'transformers', transformers.__version__)"
 
-echo "Setup complete. Remember to: export HF_HOME=\$HOME/hf_cache"
+echo "Setup complete. Remember to: export HF_HOME=/scratch/\$USER/hf_cache"

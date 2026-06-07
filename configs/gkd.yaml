@@ -18,7 +18,10 @@ gkd:
   lmbda: 1.0                     # 1.0 = 100% student-generated (on-policy)
   beta: 1.0                      # 1.0 = reverse KL (mode-seeking, "unhackable")
   temperature: 1.0
-  max_new_tokens: 1024
+  # 1024 truncates most solutions (see Phase-0). GKD samples on-policy via slow HF
+  # generate, so this is a speed/completeness tradeoff: 2048 lets most solutions
+  # finish without making each step as slow as the 3072 used for (vLLM-fast) GRPO.
+  max_new_tokens: 2048
   per_device_train_batch_size: 8
   gradient_accumulation_steps: 1
   learning_rate: 1.0e-6

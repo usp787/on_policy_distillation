@@ -19,7 +19,11 @@ grpo:
   per_device_train_batch_size: 8
   gradient_accumulation_steps: 1
   max_prompt_length: 1024
-  max_completion_length: 1024
+  # 1024 truncates almost every AIME solution -> reward ~0 -> GRPO can't learn.
+  # Phase-0 showed the 4B needs ~2k+ tokens to reach \boxed{}. 3072 gives a real
+  # reward signal while staying fast under vLLM. Raise if reward stays near 0;
+  # lower (or cut max_steps) if you blow the 8h wall.
+  max_completion_length: 3072
   learning_rate: 1.0e-6
   max_steps: 150
   save_steps: 50

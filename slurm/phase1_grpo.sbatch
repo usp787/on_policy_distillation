@@ -14,7 +14,7 @@ module load cuda/12.8.0
 module load miniconda3/25.9.1
 eval "$(conda shell.bash hook)"
 conda activate "$HOME/.conda/envs/opd"
-export HF_HOME=$HOME/hf_cache
+export HF_HOME=/scratch/$USER/hf_cache   # off the home quota (model weights live here)
 
 python src/train_grpo.py --config configs/grpo.yaml
 python src/eval_aime.py --model checkpoints/phase1_grpo \

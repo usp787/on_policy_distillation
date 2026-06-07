@@ -17,9 +17,11 @@ module load cuda/12.8.0
 module load miniconda3/25.9.1
 eval "$(conda shell.bash hook)"
 conda activate "$HOME/.conda/envs/opd"
-export HF_HOME=$HOME/hf_cache
+export HF_HOME=/scratch/$USER/hf_cache   # off the home quota (model weights live here)
 
+# 8192 is the fixed ruler: at 2048 the 4B truncated ~37% of solutions (16.7% vs
+# 43.3% on aime25) and the 8B truncated 53-67%. Keep this constant across phases.
 for M in Qwen/Qwen3-4B-Instruct-2507 Qwen/Qwen3-8B ; do
   python src/eval_aime.py --model "$M" --bench aime24,aime25 \
-         --max-new-tokens 2048 --out results/phase0
+         --max-new-tokens 8192 --out results/phase0
 done
