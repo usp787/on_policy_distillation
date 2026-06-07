@@ -11,7 +11,7 @@
 # Swap Qwen/Qwen3-8B -> Qwen/Qwen3-14B for a genuine teacher-student gap.
 set -euo pipefail
 
-module load cuda/12.4 2>/dev/null || true
+module load cuda/12.8.0
 source "$HOME/.venvs/opd/bin/activate"
 export HF_HOME=$HOME/hf_cache
 

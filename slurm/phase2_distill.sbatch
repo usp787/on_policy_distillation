@@ -10,7 +10,7 @@
 # Phase 2 — on-policy distillation (self-distill from the Phase-1 GRPO 4B). README §10.
 set -euo pipefail
 
-module load cuda/12.4 2>/dev/null || true
+module load cuda/12.8.0
 source "$HOME/.venvs/opd/bin/activate"
 export HF_HOME=$HOME/hf_cache
 

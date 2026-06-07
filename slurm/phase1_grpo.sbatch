@@ -10,7 +10,7 @@
 # Phase 1 — RLVR (GRPO), then re-eval. README §9.
 set -euo pipefail
 
-module load cuda/12.4 2>/dev/null || true
+module load cuda/12.8.0
 source "$HOME/.venvs/opd/bin/activate"
 export HF_HOME=$HOME/hf_cache
 
