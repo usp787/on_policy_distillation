@@ -1,7 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=opd-phase0
-#SBATCH --partition=gpu              # <-- your H200 partition
-#SBATCH --gres=gpu:h200:1            # <-- your gres syntax
+# This is a SHORT (<1h) job — the H200 queue is contended, so consider a faster-to-
+# schedule GPU instead of waiting: e.g. `--partition=gpu-short`, or grab one from the
+# sharing pool: `--partition=sharing --gres=gpu:h100:1` (also gpu:a100:1 / gpu:l40s:1).
+#SBATCH --partition=gpu              # <-- H200 partition; or gpu-short / sharing (see above)
+#SBATCH --gres=gpu:h200:1            # <-- or gpu:h100:1 / gpu:a100:1 on sharing
 #SBATCH --time=01:00:00
 #SBATCH --mem=64G
 #SBATCH --output=logs/phase0_%j.out

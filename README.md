@@ -130,6 +130,15 @@ land inside **one** 8-hour job so you never have to chain across the queue.
 > which is much slower than vLLM. Keep Phase-2 steps modest, or use the
 > vLLM-accelerated hand-rolled loop in Appendix A. RLVR (GRPO) *does* support vLLM.
 
+**Partition tip (Explorer):** the H200 queue is contended (often 15+ jobs pending).
+For **short jobs ≤ 1 h** — Phase 0 eval, data prep, plotting — don't wait on an H200;
+use `--partition=gpu-short`, or grab a less-queued GPU from the `sharing` partition,
+e.g. `--partition=sharing --gres=gpu:h100:1` (also `gpu:a100:1`, `gpu:l40s:1`). An H100
+on `sharing` often *starts* sooner and finishes a short job faster than waiting for an
+H200 slot. Keep the H200 (`--partition=gpu --gres=gpu:h200:1`) for the long training
+phases (1–3, up to 8 h) where the 141 GB HBM and native FP8 actually matter. Check live
+availability with the GPU Monitor portal or `sinfo -s`.
+
 ---
 
 ## 4. Local vs cluster — the iron rule
