@@ -1,12 +1,16 @@
-# Pinned floors — see README §6. Pin exact versions once a run succeeds.
-torch>=2.4
-transformers>=4.51        # Qwen3 needs >=4.51
-trl>=0.12                 # GKD lives in trl.experimental.gkd
-peft>=0.13
-accelerate>=1.0
-datasets>=3.0
-vllm>=0.8.5               # Qwen3 + FP8 on Hopper
-math-verify               # answer checking for the RLVR reward
+# PINNED to a known-consistent set. Unpinned floors on Python 3.11 pulled
+# bleeding-edge (torch 2.11/cu130, trl 1.5, transformers 5.x) that breaks vLLM
+# and the trl 0.x GKD/GRPO APIs the scripts use. These exact versions are the
+# set pip resolved together (and match the cuda/12.8.0 = cu128 module).
+# To bump later: change a pin, re-run setup, confirm Phase 0 still works, re-pin.
+torch==2.8.0              # cu128 build; vLLM 0.11 is coupled to this
+transformers==4.57.6      # Qwen3 OK; trl 0.24 API expects 4.x (NOT 5.x)
+trl==0.24.0               # GKD in trl.experimental.gkd; GRPO vllm colocate
+peft==0.17.1
+accelerate==1.10.1
+datasets==4.5.0
+vllm==0.11.0              # Qwen3 + FP8 on Hopper; pins torch 2.8.0/cu128
+math-verify               # answer checking for the RLVR reward (needs py>=3.10)
 pyyaml>=6.0               # config loading
-# flash-attn must be installed separately (needs a GPU build node):
-#   pip install flash-attn --no-build-isolation
+# flash-attn is optional (slow compile, sdpa fallback). Installed separately in
+# env/setup_env.sbatch; if its build fails, transformers uses sdpa automatically.

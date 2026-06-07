@@ -29,6 +29,6 @@ pip install flash-attn --no-build-isolation || echo "flash-attn skipped (optiona
 
 python -c "import torch, vllm, trl, transformers; \
 print('torch', torch.__version__, 'cuda', torch.cuda.is_available()); \
-print('trl', trl.__version__, 'transformers', transformers.__version__)"
+print('vllm', vllm.__version__, 'trl', trl.__version__, 'transformers', transformers.__version__)"
 
 echo "Setup complete. Remember to: export HF_HOME=\$HOME/hf_cache"
