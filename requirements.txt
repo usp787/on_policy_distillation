@@ -1,0 +1,12 @@
+# Pinned floors — see README §6. Pin exact versions once a run succeeds.
+torch>=2.4
+transformers>=4.51        # Qwen3 needs >=4.51
+trl>=0.12                 # GKD lives in trl.experimental.gkd
+peft>=0.13
+accelerate>=1.0
+datasets>=3.0
+vllm>=0.8.5               # Qwen3 + FP8 on Hopper
+math-verify               # answer checking for the RLVR reward
+pyyaml>=6.0               # config loading
+# flash-attn must be installed separately (needs a GPU build node):
+#   pip install flash-attn --no-build-isolation

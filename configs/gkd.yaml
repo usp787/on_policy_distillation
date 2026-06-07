@@ -1,0 +1,30 @@
+# Phase 2/3 — on-policy distillation (GKD). Consumed by src/train_gkd.py.
+# See README §10 (self-distill) and §11 (external teacher).
+
+student: Qwen/Qwen3-4B-Instruct-2507     # always a FRESH student
+teacher: checkpoints/phase1_grpo          # Phase 2: the RL'd 4B. Override with
+                                          # --teacher Qwen/Qwen3-8B for Phase 3.
+train_data: data/train_math.json          # chat-formatted math prompts
+
+lora:
+  r: 32
+  lora_alpha: 64
+  lora_dropout: 0.0
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+# trl.experimental.gkd.GKDConfig fields
+gkd:
+  output_dir: checkpoints/phase2_distill
+  lmbda: 1.0                     # 1.0 = 100% student-generated (on-policy)
+  beta: 1.0                      # 1.0 = reverse KL (mode-seeking, "unhackable")
+  temperature: 1.0
+  max_new_tokens: 1024
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 1
+  learning_rate: 1.0e-6
+  max_steps: 100
+  save_steps: 25
+  logging_steps: 1
+  bf16: true
+  gradient_checkpointing: true
+  report_to: []

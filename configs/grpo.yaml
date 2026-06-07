@@ -1,0 +1,30 @@
+# Phase 1 — RLVR (GRPO). Consumed by src/train_grpo.py. See README §9.
+
+model: Qwen/Qwen3-4B-Instruct-2507
+train_data: data/train_math.json          # {"problem","answer"} rows
+
+# LoRA (rank 32-64 keeps VRAM low + checkpoints small) — README §2
+lora:
+  r: 32
+  lora_alpha: 64
+  lora_dropout: 0.0
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+# trl.GRPOConfig fields
+grpo:
+  output_dir: checkpoints/phase1_grpo
+  use_vllm: true
+  vllm_mode: colocate            # fast on-policy sampling on the same GPU
+  num_generations: 8             # group size G
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 1
+  max_prompt_length: 1024
+  max_completion_length: 1024
+  learning_rate: 1.0e-6
+  max_steps: 150
+  save_steps: 50
+  logging_steps: 1
+  bf16: true
+  gradient_checkpointing: true
+  temperature: 1.0
+  report_to: []                  # set to ["wandb"] if you want logging

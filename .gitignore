@@ -1,0 +1,38 @@
+# Slurm stdout/err
+logs/
+!logs/.gitkeep
+
+# Model weights — never commit (blows the 80 GB quota)
+*.safetensors
+*.bin
+*.pt
+checkpoints/
+
+# HF cache
+hf_cache/
+.cache/
+
+# Datasets cached locally (re-downloaded via prepare_data.py on the cluster)
+data/*.json
+data/*.jsonl
+data/*.parquet
+data/*.arrow
+!data/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Keep results (commit metrics JSON + small plots) — see README §12
+!results/
+!results/*.json
+!results/*.png
