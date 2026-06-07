@@ -207,22 +207,27 @@ math-verify              # answer checking for the RLVR reward
 flash-attn --no-build-isolation
 ```
 
-`env/setup_env.sbatch` (run with `sbatch` once; building flash-attn needs a GPU node):
+`env/setup_env.sbatch` (run with `sbatch` once; flash-attn would need a GPU node to
+build, but it's optional — see below). **Use conda, not venv:** the cluster's system
+Python is 3.9, but `math-verify` requires ≥3.10, so we build a 3.11 conda env.
 
 ```bash
 #!/bin/bash
 #SBATCH --job-name=opd-setup
 #SBATCH --partition=gpu              # <-- your H200 partition
 #SBATCH --gres=gpu:h200:1            # <-- your gres syntax
-#SBATCH --time=02:00:00
+#SBATCH --time=03:00:00
 #SBATCH --mem=64G
 #SBATCH --output=logs/setup_%j.out
 
-module load cuda/12.4 2>/dev/null || true     # adjust to your cluster
-python -m venv "$HOME/.venvs/opd"
-source "$HOME/.venvs/opd/bin/activate"
+module load cuda/12.8.0          # matches torch 2.8 cu128 build
+module load miniconda3/25.9.1    # 3.11 env clears the math-verify >=3.10 floor
+eval "$(conda shell.bash hook)"
+conda create -y -p "$HOME/.conda/envs/opd" python=3.11
+conda activate "$HOME/.conda/envs/opd"
 pip install --upgrade pip
 pip install -r requirements.txt
+pip install flash-attn --no-build-isolation || echo "flash-attn skipped (optional) — sdpa"
 python -c "import torch, vllm, trl, transformers; print('torch', torch.__version__, 'cuda', torch.cuda.is_available())"
 ```
 
@@ -260,7 +265,7 @@ Measure your own numbers for student + every candidate teacher on the *same* har
 
 ```bash
 # slurm/phase0_eval.sbatch  (sketch — same #SBATCH header as setup)
-source "$HOME/.venvs/opd/bin/activate"; export HF_HOME=$HOME/hf_cache
+module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=$HOME/hf_cache
 for M in Qwen/Qwen3-4B-Instruct-2507 Qwen/Qwen3-8B ; do
   python src/eval_aime.py --model "$M" --bench aime24,aime25 \
          --max-new-tokens 2048 --out results/phase0
@@ -313,7 +318,7 @@ GRPOTrainer(model=model, reward_funcs=math_reward, args=cfg,
 
 ```bash
 # slurm/phase1_grpo.sbatch  (#SBATCH: gpu:h200:1, time=08:00:00, mem=96G)
-source "$HOME/.venvs/opd/bin/activate"; export HF_HOME=$HOME/hf_cache
+module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=$HOME/hf_cache
 python src/train_grpo.py --config configs/grpo.yaml
 python src/eval_aime.py --model checkpoints/phase1_grpo --bench aime24,aime25 --out results/phase1
 ```
@@ -353,7 +358,7 @@ GKDTrainer(model=student, args=cfg, train_dataset=ds,
 
 ```bash
 # slurm/phase2_distill.sbatch  (#SBATCH: gpu:h200:1, time=08:00:00, mem=96G)
-source "$HOME/.venvs/opd/bin/activate"; export HF_HOME=$HOME/hf_cache
+module load miniconda3/25.9.1; eval "$(conda shell.bash hook)"; conda activate "$HOME/.conda/envs/opd"; export HF_HOME=$HOME/hf_cache
 python src/train_gkd.py --config configs/gkd.yaml
 python src/eval_aime.py --model checkpoints/phase2_distill --bench aime24,aime25 --out results/phase2
 ```

@@ -7,14 +7,17 @@
 #SBATCH --output=logs/setup_%j.out
 #SBATCH --error=logs/setup_%j.err
 
-# One-off: build the venv on the cluster. flash-attn needs a GPU node to build,
-# which is why this runs under sbatch rather than on a login node. See README §6.
+# One-off: build a conda env on the cluster. We use conda (not venv) because the
+# system Python is 3.9, but math-verify requires >=3.10 — so we create a 3.11 env.
+# flash-attn needs a GPU node to build, which is why this runs under sbatch. See README §6.
 set -euo pipefail
 
-module load cuda/12.8.0     # matches torch 2.8 cu128 build (Explorer module name)
+module load cuda/12.8.0          # matches torch 2.8 cu128 build (Explorer module name)
+module load miniconda3/25.9.1    # provides conda; 3.11 env fixes the math-verify >=3.10 floor
 
-python -m venv "$HOME/.venvs/opd"
-source "$HOME/.venvs/opd/bin/activate"
+eval "$(conda shell.bash hook)"  # enable `conda activate` in a non-interactive shell
+conda create -y -p "$HOME/.conda/envs/opd" python=3.11
+conda activate "$HOME/.conda/envs/opd"
 
 pip install --upgrade pip
 pip install -r requirements.txt

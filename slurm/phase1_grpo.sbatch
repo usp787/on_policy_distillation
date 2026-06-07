@@ -11,7 +11,9 @@
 set -euo pipefail
 
 module load cuda/12.8.0
-source "$HOME/.venvs/opd/bin/activate"
+module load miniconda3/25.9.1
+eval "$(conda shell.bash hook)"
+conda activate "$HOME/.conda/envs/opd"
 export HF_HOME=$HOME/hf_cache
 
 python src/train_grpo.py --config configs/grpo.yaml
