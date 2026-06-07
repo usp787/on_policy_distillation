@@ -82,6 +82,9 @@ def main() -> None:
                    help="output prefix; file becomes <out>_<model>.json")
     p.add_argument("--dtype", default="auto", help="vLLM dtype, e.g. auto/bfloat16/fp8")
     p.add_argument("--gpu-mem-frac", type=float, default=0.90)
+    p.add_argument("--debug-samples", type=int, default=0,
+                   help="if >0, dump the first N (problem, gold, completion) per bench "
+                        "to <out>_<model>.debug.json for manual inspection")
     args = p.parse_args()
 
     from transformers import AutoTokenizer
@@ -111,6 +114,7 @@ def main() -> None:
                "k": args.k, "temperature": temperature, "benchmarks": {}}
 
     all_correct, all_total = 0.0, 0
+    debug_dump = []
     for tag in [b.strip() for b in args.bench.split(",") if b.strip()]:
         bench = load_bench(tag)
         problems = [ex["problem"] for ex in bench]
@@ -119,20 +123,33 @@ def main() -> None:
 
         outputs = llm.generate(prompts, sampling)
         per_problem = []
+        n_trunc, n_comp = 0, 0  # how many completions hit the length cap (no EOS)
         for ex, gold, out in zip(bench, golds, outputs):
             comps = [o.text for o in out.outputs]
+            n_trunc += sum(1 for o in out.outputs if o.finish_reason == "length")
+            n_comp += len(out.outputs)
             s = score(comps, gold)
             per_problem.append({"answer": gold, "score": s})
+            if len(debug_dump) < args.debug_samples:
+                o0 = out.outputs[0]
+                debug_dump.append({
+                    "bench": tag, "problem": ex["problem"], "gold": gold,
+                    "score": s, "finish_reason": o0.finish_reason,
+                    "completion": o0.text,
+                })
 
         acc = sum(pp["score"] for pp in per_problem) / max(1, len(per_problem))
+        trunc_pct = round(100 * n_trunc / max(1, n_comp), 1)
         results["benchmarks"][tag] = {
             "n": len(per_problem),
             "pass@1" if args.k == 1 else f"avg@{args.k}": round(100 * acc, 2),
+            "truncated_pct": trunc_pct,  # high => max_new_tokens too small (answers cut off)
             "per_problem": per_problem,
         }
         all_correct += sum(pp["score"] for pp in per_problem)
         all_total += len(per_problem)
-        print(f"[eval] {tag}: {100 * acc:.2f}%  (n={len(per_problem)})")
+        print(f"[eval] {tag}: {100 * acc:.2f}%  (n={len(per_problem)}, "
+              f"truncated={trunc_pct}%)")
 
     if all_total:
         combined = 100 * all_correct / all_total
@@ -143,6 +160,11 @@ def main() -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[eval] wrote {out_path}")
+
+    if debug_dump:
+        dbg_path = out_path.with_suffix(".debug.json")
+        dbg_path.write_text(json.dumps(debug_dump, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"[eval] wrote {len(debug_dump)} sample completions -> {dbg_path}")
 
 
 if __name__ == "__main__":
