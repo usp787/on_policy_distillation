@@ -12,5 +12,7 @@ datasets==4.5.0
 vllm==0.11.0              # Qwen3 + FP8 on Hopper; pins torch 2.8.0/cu128
 math-verify               # answer checking for the RLVR reward (needs py>=3.10)
 pyyaml>=6.0               # config loading
+pillow                    # torchvision (pulled by torch) imports PIL eagerly; vLLM's
+                          # transformers image-processor import needs it even for text models
 # flash-attn is optional (slow compile, sdpa fallback). Installed separately in
 # env/setup_env.sbatch; if its build fails, transformers uses sdpa automatically.
