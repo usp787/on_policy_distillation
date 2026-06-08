@@ -22,5 +22,7 @@ conda activate "$HOME/.conda/envs/opd"
 export HF_HOME=/scratch/$USER/hf_cache   # off the home quota (teacher + merged weights live here)
 
 python src/train_gkd.py --config configs/gkd.yaml
+# avg@4 (k=4, temp 0.7) so the number is directly comparable to the avg@4 baseline
+# (50.00 combined), not the noisy greedy pass@1.
 python src/eval_aime.py --model checkpoints/phase2_distill \
-       --bench aime24,aime25 --out results/phase2
+       --bench aime24,aime25 --k 4 --temperature 0.7 --out results/phase2_avg4

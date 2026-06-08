@@ -24,15 +24,20 @@ gkd:
   lmbda: 1.0                     # 1.0 = 100% student-generated (on-policy)
   beta: 1.0                      # 1.0 = reverse KL (mode-seeking, "unhackable")
   temperature: 1.0
-  # 1024 truncates most solutions (see Phase-0). GKD samples on-policy via slow HF
-  # generate, so this is a speed/completeness tradeoff: 2048 lets most solutions
-  # finish without making each step as slow as the 3072 used for (vLLM-fast) GRPO.
-  max_new_tokens: 2048
+  # On-policy rollouts are distilled at this cap. The first Phase-2 run used 2048, but
+  # eval allows 8192 and ~30% of AIME solutions truncate even there -> distilling on
+  # truncated rollouts biases the student short and hurts the long/hard problems. 4096
+  # roughly halves that bias; HF-generate is slower but we have the budget (see below).
+  max_new_tokens: 4096
   per_device_train_batch_size: 8
   gradient_accumulation_steps: 1
-  learning_rate: 1.0e-6
-  max_steps: 100
-  save_steps: 25
+  # First run was badly under-trained: 100 steps = 0.2 epoch = ~16 min of an 8h slot,
+  # loss still falling at the end. At ~10-15 s/step a 600-step run is ~2-2.5h -> well
+  # inside 8h. LR raised from RL-scale 1e-6 to a distillation-scale 5e-6 to actually
+  # move the LoRA (watch grad_norm stays bounded, <~10; lower LR if it spikes).
+  learning_rate: 5.0e-6
+  max_steps: 600
+  save_steps: 100
   logging_steps: 1
   bf16: true
   gradient_checkpointing: true
