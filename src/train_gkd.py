@@ -61,11 +61,18 @@ def main() -> None:
     lora = LoraConfig(task_type="CAUSAL_LM", **cfg["lora"])
 
     student = AutoModelForCausalLM.from_pretrained(
-        student_id, torch_dtype="bfloat16", trust_remote_code=True
+        student_id, dtype="bfloat16", trust_remote_code=True
+    )
+
+    # This TRL version's GKDTrainer takes the teacher as an explicit `teacher_model` arg
+    # (it does NOT auto-load from GKDConfig.teacher_model_name_or_path). Load it as a bf16
+    # object — the 30B-A3B teacher in fp32 would be ~120 GB and OOM. No device_map: the
+    # trainer's accelerator.prepare_model() places it on the GPU as a frozen eval model.
+    teacher = AutoModelForCausalLM.from_pretrained(
+        teacher_id, dtype="bfloat16", trust_remote_code=True
     )
 
     gkd_kwargs = dict(cfg["gkd"])
-    gkd_kwargs["teacher_model_name_or_path"] = teacher_id
     if args.output_dir:
         gkd_kwargs["output_dir"] = args.output_dir
     if args.max_steps is not None:
@@ -74,6 +81,7 @@ def main() -> None:
 
     trainer = GKDTrainer(
         model=student,
+        teacher_model=teacher,
         args=gkd_cfg,
         train_dataset=ds,
         processing_class=tok,
