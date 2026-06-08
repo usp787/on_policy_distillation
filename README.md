@@ -405,14 +405,20 @@ python src/train_gkd.py --config configs/gkd.yaml \
 python src/eval_aime.py --model checkpoints/phase3_distill --bench aime24,aime25 --out results/phase3
 ```
 
-**Expected, and the point:** with the **8B** teacher (barely above the 4B in matched
-mode) the student **won't improve much** — empirical proof of your intuition. With
-the **14B** teacher (a genuine gap) you should see a real gain. Conclusion to write
-up: *what bounds the student is the teacher–student gap, not the act of distilling.*
+**Expected, and the point:** with the **8B** teacher the student **won't improve** —
+and our Phase-0 measurement makes this even sharper than the README originally guessed:
+the non-thinking 8B (21.67% combined) is actually **worse** than the 4B student (51.67%),
+so reverse-KL would drag the student *down*, not up. For a genuine positive gap use the
+**14B** teacher (affordable now the cache is on scratch), or run the 8B in *thinking*
+mode (student must also think — Appx B). Conclusion to write up: *what bounds the student
+is the teacher–student gap, not the act of distilling.*
 
 ---
 
 ## 12. Reading results / deliverables
+
+> **Progress** (2026-06-07): ✅ env · ✅ data · ✅ **Phase 0 done** (ruler = 8192 tok;
+> 4B = 51.67% combined, 8B = 21.67%) · ⬜ Phase 1 (next) · ⬜ Phase 2 · ⬜ Phase 3.
 
 Commit to `results/`:
 
