@@ -73,8 +73,9 @@ def resolve_model_path(model: str) -> str:
     weights). If `model` is such a dir, merge the adapter into its base model and
     return the merged dir; otherwise return `model` unchanged.
 
-    The merge runs on CPU so it doesn't compete with vLLM for GPU memory. The
-    merged copy is cached next to the adapter (<dir>_merged) and reused on re-runs.
+    The merge runs on CPU so it doesn't compete with vLLM for GPU memory. The merged
+    full model (~8 GB) is storage-sensitive, so it's written under $HF_HOME (scratch)
+    rather than next to the adapter on the home node; it's cached and reused on re-runs.
     All phase checkpoints (1/2/3) are LoRA adapters, so this path is the norm for
     re-eval, not the exception.
     """
@@ -84,7 +85,10 @@ def resolve_model_path(model: str) -> str:
     if not is_adapter:
         return model  # plain HF id or a full-weight local dir
 
-    merged_dir = p.parent / f"{p.name}_merged"
+    # Keep the big merged model off the (small) home node: prefer scratch via $HF_HOME.
+    hf_home = os.environ.get("HF_HOME")
+    merged_root = Path(hf_home) / "opd_merged" if hf_home else p.parent
+    merged_dir = merged_root / f"{p.name}_merged"
     if (merged_dir / "config.json").exists():
         print(f"[eval] reusing merged model at {merged_dir}")
         return str(merged_dir)

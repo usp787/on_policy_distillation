@@ -1,10 +1,16 @@
-# Phase 2/3 — on-policy distillation (GKD). Consumed by src/train_gkd.py.
-# See README §10 (self-distill) and §11 (external teacher).
+# Phase 2 — on-policy distillation (GKD). Consumed by src/train_gkd.py. See README §10.
+#
+# Teacher = Qwen3-30B-A3B-Instruct-2507: same Qwen3 family (shared 151,936 vocab -> logit
+# KL valid), NON-THINKING (matches our 8192 ruler, no mode mismatch), AIME25 61.3 vs the
+# 4B student's 47.4 -> a real +14 gap to teach, and no SFT needed. It's MoE (30.5B total
+# but only 3.3B active/token), so the teacher forward pass in GKD is cheap (~3B-dense
+# cost). bf16 weights ~61 GB co-resident with the 4B student fit one H200 (141 GB); the
+# weights download to $HF_HOME on scratch. (Self-distill from the Phase-1 4B was dropped
+# — Phase 1 was a null result, nothing to recover.)
 
-student: Qwen/Qwen3-4B-Instruct-2507     # always a FRESH student
-teacher: checkpoints/phase1_grpo          # Phase 2: the RL'd 4B. Override with
-                                          # --teacher Qwen/Qwen3-8B for Phase 3.
-train_data: data/train_math.json          # chat-formatted math prompts
+student: Qwen/Qwen3-4B-Instruct-2507             # always a FRESH student
+teacher: Qwen/Qwen3-30B-A3B-Instruct-2507        # 30B MoE, non-thinking, AIME25 61.3
+train_data: data/train_math.json                  # chat-formatted math prompts
 
 lora:
   r: 32

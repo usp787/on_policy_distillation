@@ -348,12 +348,54 @@ python src/eval_aime.py --model checkpoints/phase1_grpo --bench aime24,aime25 --
 baseline. You'll also *feel* the sparsity — reward is noisy, needs the group
 baseline (GRPO) and many rollouts to get signal. That contrast is the lesson.
 
+**Result (measured, 2026-06-08) — a null result, and why it's the *expected* one.**
+Two runs: (a) MATH train set → reward saturated at 1.0, `frac_reward_zero_std≈1.0`,
+~zero gradient (the prompts were too easy → no GRPO advantage); (b) DeepScaleR train
+set → real reward variance and gradient, but **no AIME gain**. avg@4 (k=4, temp 0.7,
+8192 ruler), 60 questions:
+
+| | aime24 | aime25 | combined |
+|---|---|---|---|
+| Baseline 4B | 58.33 | 41.67 | **50.00** |
+| Phase-1 GRPO | 53.33 | 43.33 | **48.33** |
+
+The −1.67 combined is ~1 question out of 60 — well inside eval noise — and the two
+subsets move in *opposite* directions (the fingerprint of noise, not a training
+effect). The earlier greedy single-shot −5 was mostly measurement noise; avg@4
+collapses it. **Conclusion: `Qwen3-4B-Instruct-2507` is already fully RL-post-trained
+on math; naive single-reward LoRA-GRPO on the same verifiable distribution has
+nothing to add, and can mildly *shift the policy away* from its optimized state
+(slightly higher truncation, no accuracy gain).** This is exactly the §1 prediction —
+the strong 2507 student leaves almost no headroom for a crude RLVR pass. We accept it
+as the Phase-1 finding rather than burn slots chasing a within-noise gain.
+
 ---
 
-## 10. Phase 2 — on-policy distillation (self-distill) → goal #1
+## 10. Phase 2 — on-policy distillation → goal #1
 
-Reproduce the blog's headline result: distillation recovers an RL-trained policy in
-**far fewer gradient steps** than the RL took. Teacher = your **Phase-1 GRPO
+> **Plan change (2026-06-08), forced by the Phase-1 null result.** The original Phase 2
+> was *self-distill* from the Phase-1 GRPO checkpoint, to reproduce the blog's "recover
+> the RL gains in far fewer steps" headline. But Phase 1 produced **no** gain to recover
+> (§9), so self-distillation from it would just reproduce the baseline. Storage is also no
+> longer the binding constraint (HF cache on scratch, §6) — VRAM on one H200 is — so the
+> teacher choice is now free to be much bigger. We therefore distill from a real,
+> already-post-trained teacher:
+>
+> - **Phase 2 = distill from `Qwen/Qwen3-30B-A3B-Instruct-2507`.** This is now where most
+>   of the reproduction credit lands. It is the cleanest teacher for our constraints:
+>   same Qwen3 family (shared 151,936 vocab → logit KL valid); **non-thinking** (matches
+>   the 8192 ruler, no mode mismatch); **AIME25 61.3 vs the student's 47.4 → a genuine
+>   +14 gap to teach**; and **no SFT** (it already plays the blog's "teacher" role that
+>   their 32B+SFT filled). It's MoE — 30.5B total but only **3.3B active/token** — so the
+>   teacher forward pass is cheap (~3B-dense cost), and bf16 weights (~61 GB) sit
+>   co-resident with the 4B student inside 141 GB (FP8 ~31 GB if you want margin).
+>   Student = a **fresh** `Qwen3-4B-Instruct-2507`.
+> - **Phase 3 = frozen for now.** Phase 2's 30B teacher is expected to carry the headline,
+>   so the optional bigger-teacher stress-test is parked. (The 235B-A22B-Instruct-2507
+>   scores higher still but won't fit one H200 even in FP8; a Phase-3 revisit would mean
+>   thinking-mode or multi-GPU.)
+
+(Historical self-distill recipe, kept for reference.) Teacher = your **Phase-1 GRPO
 checkpoint**; student = a **fresh** `Qwen3-4B-Instruct-2507`. Same family → shared
 vocab → logit KL is valid. Pure on-policy + reverse KL ≈ the blog's setup:
 
@@ -409,16 +451,23 @@ python src/eval_aime.py --model checkpoints/phase3_distill --bench aime24,aime25
 and our Phase-0 measurement makes this even sharper than the README originally guessed:
 the non-thinking 8B (21.67% combined) is actually **worse** than the 4B student (51.67%),
 so reverse-KL would drag the student *down*, not up. For a genuine positive gap use the
-**14B** teacher (affordable now the cache is on scratch), or run the 8B in *thinking*
-mode (student must also think — Appx B). Conclusion to write up: *what bounds the student
-is the teacher–student gap, not the act of distilling.*
+**14B** teacher (affordable now the cache is on scratch), **or go larger still (>20B)** —
+disk is no longer the limit, so a teacher big enough to clearly beat the 4B in
+non-thinking mode is the cleanest way to *demonstrate* distillation working. (Alternative:
+run the 8B in *thinking* mode, but then the student must also think — Appx B — which
+breaks the fixed non-thinking 8192 ruler, so prefer a bigger non-thinking teacher.)
+Conclusion to write up: *what bounds the student is the teacher–student gap, not the act
+of distilling.*
 
 ---
 
 ## 12. Reading results / deliverables
 
-> **Progress** (2026-06-07): ✅ env · ✅ data · ✅ **Phase 0 done** (ruler = 8192 tok;
-> 4B = 51.67% combined, 8B = 21.67%) · ⬜ Phase 1 (next) · ⬜ Phase 2 · ⬜ Phase 3.
+> **Progress** (2026-06-08): ✅ env · ✅ data · ✅ **Phase 0 done** (ruler = 8192 tok;
+> 4B = 51.67% combined, 8B = 21.67%) · ✅ **Phase 1 done — null result** (RLVR/GRPO:
+> avg@4 50.00 baseline → 48.33, within noise; the 2507 student is already RL-saturated,
+> §9) · ⬜ **Phase 2 (next)** — distill from `Qwen3-30B-A3B-Instruct-2507` (non-thinking,
+> AIME25 61.3 → real +14 gap; the headline run) · ❄️ Phase 3 frozen (30B should carry it).
 
 Commit to `results/`:
 
