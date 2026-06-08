@@ -20,6 +20,7 @@ module load miniconda3/25.9.1
 eval "$(conda shell.bash hook)"
 conda activate "$HOME/.conda/envs/opd"
 export HF_HOME=/scratch/$USER/hf_cache   # off the home quota (teacher + merged weights live here)
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True   # reduce fragmentation OOM (loss tensors are large/variable)
 
 python src/train_gkd.py --config configs/gkd.yaml
 # avg@4 (k=4, temp 0.7) so the number is directly comparable to the avg@4 baseline

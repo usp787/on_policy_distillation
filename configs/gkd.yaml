@@ -29,8 +29,12 @@ gkd:
   # truncated rollouts biases the student short and hurts the long/hard problems. 4096
   # roughly halves that bias; HF-generate is slower but we have the budget (see below).
   max_new_tokens: 4096
-  per_device_train_batch_size: 8
-  gradient_accumulation_steps: 1
+  # The GKD loss is a per-token KL over the full 151,936 vocab, so its memory is
+  # batch x seq x vocab. At batch 8 x 4096 the KL tensors (~10 GB each, several of them)
+  # OOM the 140 GB H200 on top of the 61 GB teacher. Drop the micro-batch to 2 and keep
+  # the effective batch at 8 via 4x accumulation -> 4x less loss-tensor memory, same math.
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 4
   # First run was badly under-trained: 100 steps = 0.2 epoch = ~16 min of an 8h slot,
   # loss still falling at the end. At ~10-15 s/step a 600-step run is ~2-2.5h -> well
   # inside 8h. LR raised from RL-scale 1e-6 to a distillation-scale 5e-6 to actually
