@@ -68,6 +68,45 @@ def safe_model_tag(model: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", model.strip("/"))
 
 
+def resolve_model_path(model: str) -> str:
+    """vLLM can't load a bare PEFT/LoRA adapter directory (no config.json / base
+    weights). If `model` is such a dir, merge the adapter into its base model and
+    return the merged dir; otherwise return `model` unchanged.
+
+    The merge runs on CPU so it doesn't compete with vLLM for GPU memory. The
+    merged copy is cached next to the adapter (<dir>_merged) and reused on re-runs.
+    All phase checkpoints (1/2/3) are LoRA adapters, so this path is the norm for
+    re-eval, not the exception.
+    """
+    p = Path(model)
+    adapter_cfg = p / "adapter_config.json"
+    is_adapter = p.is_dir() and adapter_cfg.exists() and not (p / "config.json").exists()
+    if not is_adapter:
+        return model  # plain HF id or a full-weight local dir
+
+    merged_dir = p.parent / f"{p.name}_merged"
+    if (merged_dir / "config.json").exists():
+        print(f"[eval] reusing merged model at {merged_dir}")
+        return str(merged_dir)
+
+    import torch
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    base = json.loads(adapter_cfg.read_text(encoding="utf-8"))["base_model_name_or_path"]
+    print(f"[eval] merging LoRA adapter {p} into base {base} -> {merged_dir} (CPU)")
+    base_model = AutoModelForCausalLM.from_pretrained(
+        base, torch_dtype=torch.bfloat16, trust_remote_code=True
+    )
+    merged = PeftModel.from_pretrained(base_model, str(p)).merge_and_unload()
+    merged_dir.mkdir(parents=True, exist_ok=True)
+    merged.save_pretrained(str(merged_dir))
+    AutoTokenizer.from_pretrained(str(p), trust_remote_code=True).save_pretrained(str(merged_dir))
+    del merged, base_model
+    print(f"[eval] merged model written -> {merged_dir}")
+    return str(merged_dir)
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description="vLLM AIME eval with math-verify scoring.")
     p.add_argument("--model", required=True, help="HF id or local checkpoint path")
@@ -93,9 +132,10 @@ def main() -> None:
     from transformers import AutoTokenizer
     from vllm import LLM, SamplingParams
 
-    tok = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
+    model_path = resolve_model_path(args.model)  # merges a LoRA adapter dir if needed
+    tok = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     llm = LLM(
-        model=args.model,
+        model=model_path,
         dtype=args.dtype,
         trust_remote_code=True,
         gpu_memory_utilization=args.gpu_mem_frac,
