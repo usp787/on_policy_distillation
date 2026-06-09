@@ -9,7 +9,15 @@
 # — Phase 1 was a null result, nothing to recover.)
 
 student: Qwen/Qwen3-4B-Instruct-2507             # always a FRESH student
-teacher: Qwen/Qwen3-30B-A3B-Instruct-2507        # 30B MoE, non-thinking, AIME25 61.3
+# FP8 (block-128) build of the 30B-A3B-Instruct-2507 teacher: AIME25 61.3 — IDENTICAL to
+# the bf16 weights, so the +14 gap over the 4B is fully intact — but ~31 GB resident
+# instead of ~61 GB. That freed ~30 GB is exactly the headroom the dense full-vocab KL
+# tensor needs: the bf16 teacher left no room and the loss OOM'd (job at step 138). Native
+# fp8 loads on the H200 (Hopper); train_gkd.py must load it with dtype="auto" (NOT forced
+# bf16) so transformers honors the fp8 quantization_config. No smaller non-thinking Qwen3
+# has a real gap (the 2507 instruct line is only 4B/30B/235B), so FP8 of THIS teacher is
+# the way to fit one H200 without losing the gap that makes the OPD effect visible.
+teacher: Qwen/Qwen3-30B-A3B-Instruct-2507-FP8    # 30B MoE, non-thinking, AIME25 61.3, ~31 GB
 train_data: data/train_math.json                  # chat-formatted math prompts
 
 lora:
@@ -35,13 +43,14 @@ gkd:
   # 8192). That bias is the unavoidable cost of staying on HF-generate; the vLLM path
   # (src/handrolled_opd.py) is the way out if 2048 transfer proves too weak.
   max_new_tokens: 2048
-  # KL loss memory is batch x seq x vocab (151,936). The micro-batch-2 + accum-4 layout
-  # was the 4096-OOM workaround, but it also ran `generate` 4x per logged step on batches
-  # of 2 -> terrible decode parallelism, a big part of why steps ballooned. At 2048 the KL
-  # tensors halve (~10 GB), so restore the proven batch-8 / no-accum profile from the first
-  # run: one generate per step on a batch of 8 = far better throughput, same effective batch.
-  per_device_train_batch_size: 8
-  gradient_accumulation_steps: 1
+  # KL loss memory is batch x seq x vocab (151,936) in fp32, and it scales with the ACTUAL
+  # rollout length (grows as training proceeds). Batch-8 OOM'd at step 138 once rollouts got
+  # long (9.27 GB KL tensor, no room beside the teacher). Halve it: batch 4 + accum 2 keeps
+  # the effective batch at 8 but ~halves the live KL tensor (~4.6 GB). Combined with the FP8
+  # teacher (~30 GB freed) this fits with real margin; decode throughput stays fine (the
+  # 2048 cap already brought steps to ~12-45 s — speed is no longer the binding constraint).
+  per_device_train_batch_size: 4
+  gradient_accumulation_steps: 2
   # LR stays at the distillation-scale 5e-6 to actually move the LoRA (1e-6 was RL-scale and
   # under-moved). Watch: a high LR can lengthen/destabilize rollouts (-> slower steps); if
   # grad_norm spikes >~10 or step time creeps up, drop to 3e-6.

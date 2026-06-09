@@ -8,6 +8,7 @@ NOTE: GKD is experimental in TRL — import path / arg names move between versio
 (README Appendix B). We try a couple of known locations.
 """
 import argparse
+import json
 from pathlib import Path
 
 import yaml
@@ -66,11 +67,14 @@ def main() -> None:
     )
 
     # This TRL version's GKDTrainer takes the teacher as an explicit `teacher_model` arg
-    # (it does NOT auto-load from GKDConfig.teacher_model_name_or_path). Load it as a bf16
-    # object — the 30B-A3B teacher in fp32 would be ~120 GB and OOM. No device_map: the
+    # (it does NOT auto-load from GKDConfig.teacher_model_name_or_path). No device_map: the
     # trainer's accelerator.prepare_model() places it on the GPU as a frozen eval model.
+    # The default teacher is the FP8 (block-128) 30B checkpoint — load with dtype="auto" so
+    # transformers honors its fp8 quantization_config (~31 GB resident vs ~61 GB bf16, which
+    # OOM'd the dense KL). Forcing bf16 here would dequantize and defeat the point. A non-FP8
+    # teacher (e.g. a Phase-3 swap) has no quantization_config, so "auto" gives it bf16 anyway.
     teacher = AutoModelForCausalLM.from_pretrained(
-        teacher_id, dtype="bfloat16", trust_remote_code=True
+        teacher_id, dtype="auto", trust_remote_code=True
     )
 
     gkd_kwargs = dict(cfg["gkd"])
@@ -88,15 +92,37 @@ def main() -> None:
         processing_class=tok,
         peft_config=lora,
     )
-    # Auto-resume: TRL GKD on HF-generate is generate-bound and a 600-step run can't
-    # finish one 8h slot (job 7497131 died at step 59/600). save_steps=25 leaves a
-    # resumable checkpoint; if output_dir already holds a checkpoint-N, continue from it.
-    # Just resubmit the sbatch to chain across slots. None -> fresh start (no checkpoint yet).
+    # Guarded auto-resume. save_steps leaves a checkpoint so a timed-out job can continue
+    # (resubmit the sbatch). BUT a checkpoint from a DIFFERENT config silently restores its
+    # optimizer/scheduler — that footgun once resumed a stale 1e-6-LR checkpoint into a 5e-6
+    # run and trained at the wrong LR. So only resume when the run signature matches; if a
+    # checkpoint exists under a different/absent signature, refuse and make the user decide.
+    out = Path(gkd_cfg.output_dir)
+    sig_keys = ["learning_rate", "max_steps", "per_device_train_batch_size",
+                "gradient_accumulation_steps", "max_new_tokens"]
+    signature = json.dumps(
+        {"student": student_id, "teacher": teacher_id,
+         **{k: gkd_kwargs.get(k) for k in sig_keys}},
+        sort_keys=True,
+    )
+    sig_path = out / "opd_run_signature.json"
+    last_ckpt = get_last_checkpoint(str(out)) if out.is_dir() else None
     resume = None
-    if Path(gkd_cfg.output_dir).is_dir():
-        resume = get_last_checkpoint(gkd_cfg.output_dir)
-    if resume:
-        print(f"[gkd] resuming from {resume}")
+    if last_ckpt:
+        prev = sig_path.read_text(encoding="utf-8") if sig_path.exists() else None
+        if prev == signature:
+            resume = last_ckpt
+            print(f"[gkd] resuming from {resume} (config signature matches)")
+        else:
+            raise SystemExit(
+                f"[gkd] REFUSING to resume: {last_ckpt} exists but its run config differs "
+                f"from the current one (or predates signature tracking) — resuming would "
+                f"inherit the wrong optimizer/scheduler (e.g. a stale LR). Either "
+                f"`rm -rf {out}` to start fresh, or restore the matching config.\n"
+                f"  current : {signature}\n  on disk : {prev}"
+            )
+    out.mkdir(parents=True, exist_ok=True)
+    sig_path.write_text(signature, encoding="utf-8")
     trainer.train(resume_from_checkpoint=resume)
     trainer.save_model(gkd_cfg.output_dir)
     print(f"[gkd] saved adapter -> {gkd_cfg.output_dir}  (teacher={teacher_id})")
