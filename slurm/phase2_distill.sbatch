@@ -6,6 +6,7 @@
 #SBATCH --mem=96G
 #SBATCH --output=logs/phase2_%j.out
 #SBATCH --error=logs/phase2_%j.err
+#SBATCH --open-mode=append          # resubmitted (resumed) runs append to logs, don't clobber
 
 # Phase 2 — on-policy distillation from the Qwen3-30B-A3B-Instruct-2507 teacher. README §10.
 # Teacher (30B MoE, non-thinking, AIME25 61.3) is set in configs/gkd.yaml; it gives a real
@@ -22,6 +23,10 @@ conda activate "$HOME/.conda/envs/opd"
 export HF_HOME=/scratch/$USER/hf_cache   # off the home quota (teacher + merged weights live here)
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True   # reduce fragmentation OOM (loss tensors are large/variable)
 
+# train_gkd.py auto-resumes from the last checkpoints/phase2_distill/checkpoint-N if one
+# exists (save_steps=25). If this job hits the 8h wall before training finishes, just
+# `sbatch` this file again -> it continues from the last checkpoint instead of restarting.
+# A run that already reached max_steps re-enters as a no-op and falls through to the eval.
 python src/train_gkd.py --config configs/gkd.yaml
 # avg@4 (k=4, temp 0.7) so the number is directly comparable to the avg@4 baseline
 # (50.00 combined), not the noisy greedy pass@1.

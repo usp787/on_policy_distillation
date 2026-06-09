@@ -24,24 +24,35 @@ gkd:
   lmbda: 1.0                     # 1.0 = 100% student-generated (on-policy)
   beta: 1.0                      # 1.0 = reverse KL (mode-seeking, "unhackable")
   temperature: 1.0
-  # On-policy rollouts are distilled at this cap. The first Phase-2 run used 2048, but
-  # eval allows 8192 and ~30% of AIME solutions truncate even there -> distilling on
-  # truncated rollouts biases the student short and hurts the long/hard problems. 4096
-  # roughly halves that bias; HF-generate is slower but we have the budget (see below).
-  max_new_tokens: 4096
-  # The GKD loss is a per-token KL over the full 151,936 vocab, so its memory is
-  # batch x seq x vocab. At batch 8 x 4096 the KL tensors (~10 GB each, several of them)
-  # OOM the 140 GB H200 on top of the 61 GB teacher. Drop the micro-batch to 2 and keep
-  # the effective batch at 8 via 4x accumulation -> 4x less loss-tensor memory, same math.
-  per_device_train_batch_size: 2
-  gradient_accumulation_steps: 4
-  # First run was badly under-trained: 100 steps = 0.2 epoch = ~16 min of an 8h slot,
-  # loss still falling at the end. At ~10-15 s/step a 600-step run is ~2-2.5h -> well
-  # inside 8h. LR raised from RL-scale 1e-6 to a distillation-scale 5e-6 to actually
-  # move the LoRA (watch grad_norm stays bounded, <~10; lower LR if it spikes).
+  # On-policy rollouts are distilled at this cap. TRL GKD samples with HF `generate`
+  # (no vLLM, README Appx B), which is O(tokens) sequential decode AND runs to the cap
+  # whenever the student doesn't emit EOS. The 4096 run blew up: per-step time was 40-80x
+  # the estimate (10-30 min/step) because long rollouts dominate -> only 59/600 steps in
+  # 8h, killed by the wall (job 7497131). Back to 2048: halves worst-case decode and is
+  # the exact memory/speed profile of the first run, which fit batch-8 with no OOM.
+  # Trade-off (accepted): 2048 < the 8192 eval ruler, so we distill on more-truncated
+  # rollouts and re-introduce a short-bias on long/hard problems (README ~30% truncate at
+  # 8192). That bias is the unavoidable cost of staying on HF-generate; the vLLM path
+  # (src/handrolled_opd.py) is the way out if 2048 transfer proves too weak.
+  max_new_tokens: 2048
+  # KL loss memory is batch x seq x vocab (151,936). The micro-batch-2 + accum-4 layout
+  # was the 4096-OOM workaround, but it also ran `generate` 4x per logged step on batches
+  # of 2 -> terrible decode parallelism, a big part of why steps ballooned. At 2048 the KL
+  # tensors halve (~10 GB), so restore the proven batch-8 / no-accum profile from the first
+  # run: one generate per step on a batch of 8 = far better throughput, same effective batch.
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 1
+  # LR stays at the distillation-scale 5e-6 to actually move the LoRA (1e-6 was RL-scale and
+  # under-moved). Watch: a high LR can lengthen/destabilize rollouts (-> slower steps); if
+  # grad_norm spikes >~10 or step time creeps up, drop to 3e-6.
   learning_rate: 5.0e-6
-  max_steps: 600
-  save_steps: 100
+  # max_steps cut 600 -> 300. 600 never had a prayer of fitting a generate-bound 8h slot;
+  # 300 x effective-batch-8 = 2400 seqs ~= 0.6 epoch of the ~4k-prompt set (vs the first
+  # run's under-trained 0.2). With save_steps=25 + auto-resume (train_gkd.py), a timed-out
+  # job is no longer wasted: resubmit the sbatch and it continues from the last checkpoint.
+  max_steps: 300
+  save_steps: 25
+  save_total_limit: 2          # keep only the 2 newest checkpoints (resume needs just the last) -> bounded disk
   logging_steps: 1
   bf16: true
   gradient_checkpointing: true

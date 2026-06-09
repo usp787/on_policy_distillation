@@ -14,6 +14,7 @@ import yaml
 from datasets import load_dataset
 from peft import LoraConfig
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers.trainer_utils import get_last_checkpoint
 
 try:  # newer TRL
     from trl.experimental.gkd import GKDConfig, GKDTrainer
@@ -87,7 +88,16 @@ def main() -> None:
         processing_class=tok,
         peft_config=lora,
     )
-    trainer.train()
+    # Auto-resume: TRL GKD on HF-generate is generate-bound and a 600-step run can't
+    # finish one 8h slot (job 7497131 died at step 59/600). save_steps=25 leaves a
+    # resumable checkpoint; if output_dir already holds a checkpoint-N, continue from it.
+    # Just resubmit the sbatch to chain across slots. None -> fresh start (no checkpoint yet).
+    resume = None
+    if Path(gkd_cfg.output_dir).is_dir():
+        resume = get_last_checkpoint(gkd_cfg.output_dir)
+    if resume:
+        print(f"[gkd] resuming from {resume}")
+    trainer.train(resume_from_checkpoint=resume)
     trainer.save_model(gkd_cfg.output_dir)
     print(f"[gkd] saved adapter -> {gkd_cfg.output_dir}  (teacher={teacher_id})")
 
