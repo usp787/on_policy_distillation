@@ -1,0 +1,71 @@
+INFO 06-07 18:20:56 [__init__.py:216] Automatically detected platform cuda.
+INFO 06-07 18:21:02 [utils.py:233] non-default args: {'trust_remote_code': True, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-4B-Instruct-2507'}
+INFO 06-07 18:21:02 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 06-07 18:21:02 [model.py:1510] Using max model len 262144
+INFO 06-07 18:21:03 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:04 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:04 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-4B-Instruct-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Instruct-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=262144, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-4B-Instruct-2507, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:08 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m WARNING 06-07 18:21:08 [topk_topp_sampler.py:66] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:09 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-4B-Instruct-2507...
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:09 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:09 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:09 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:12 [default_loader.py:267] Loading weights took 3.11 seconds
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:13 [gpu_model_runner.py:2653] Model loading took 7.6065 GiB and 3.574698 seconds
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:22 [backends.py:548] Using cache directory: /home/zha.j/.cache/vllm/torch_compile_cache/d6558ca529/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:22 [backends.py:559] Dynamo bytecode transform time: 8.65 s
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:25 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 2.239 s
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:25 [monitor.py:34] torch.compile takes 8.65 s in total
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:26 [gpu_worker.py:298] Available KV cache memory: 112.46 GiB
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:27 [kv_cache_utils.py:1087] GPU KV cache size: 818,912 tokens
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:27 [kv_cache_utils.py:1091] Maximum concurrency for 262,144 tokens per request: 3.12x
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:32 [gpu_model_runner.py:3480] Graph capturing finished in 5 secs, took -0.66 GiB
+[1;36m(EngineCore_DP0 pid=2382396)[0;0m INFO 06-07 18:21:32 [core.py:210] init engine (profile, create kv cache, warmup model) took 18.81 seconds
+INFO 06-07 18:21:33 [llm.py:306] Supported_tasks: ['generate']
+[eval] aime24: 20.00%  (n=30, truncated=83.3%)
+[eval] aime25: 16.67%  (n=30, truncated=83.3%)
+[eval] combined: 18.33%  (n=60)
+[eval] wrote results/phase0_Qwen_Qwen3-4B-Instruct-2507.json
+INFO 06-07 18:22:06 [__init__.py:216] Automatically detected platform cuda.
+INFO 06-07 18:22:10 [utils.py:233] non-default args: {'trust_remote_code': True, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-8B'}
+INFO 06-07 18:22:11 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 06-07 18:22:11 [model.py:1510] Using max model len 40960
+INFO 06-07 18:22:11 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:12 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:12 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-8B', speculative_config=None, tokenizer='Qwen/Qwen3-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-8B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:16 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m WARNING 06-07 18:22:16 [topk_topp_sampler.py:66] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:16 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-8B...
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:16 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:16 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:17 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:23 [default_loader.py:267] Loading weights took 5.81 seconds
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:23 [gpu_model_runner.py:2653] Model loading took 15.2683 GiB and 6.288800 seconds
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:30 [backends.py:548] Using cache directory: /home/zha.j/.cache/vllm/torch_compile_cache/0e4f84c239/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:30 [backends.py:559] Dynamo bytecode transform time: 6.26 s
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:36 [backends.py:197] Cache the graph for dynamic shape for later use
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:22:58 [backends.py:218] Compiling a graph for dynamic shape takes 27.47 s
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:23:12 [monitor.py:34] torch.compile takes 33.73 s in total
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:23:13 [gpu_worker.py:298] Available KV cache memory: 104.74 GiB
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:23:13 [kv_cache_utils.py:1087] GPU KV cache size: 762,704 tokens
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:23:13 [kv_cache_utils.py:1091] Maximum concurrency for 40,960 tokens per request: 18.62x
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:23:22 [gpu_model_runner.py:3480] Graph capturing finished in 8 secs, took -0.69 GiB
+[1;36m(EngineCore_DP0 pid=2383151)[0;0m INFO 06-07 18:23:22 [core.py:210] init engine (profile, create kv cache, warmup model) took 58.50 seconds
+INFO 06-07 18:23:23 [llm.py:306] Supported_tasks: ['generate']
+[eval] aime24: 23.33%  (n=30, truncated=53.3%)
+[eval] aime25: 13.33%  (n=30, truncated=66.7%)
+[eval] combined: 18.33%  (n=60)
+[eval] wrote results/phase0_Qwen_Qwen3-8B.json

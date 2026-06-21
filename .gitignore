@@ -1,6 +1,10 @@
-# Slurm stdout/err
-logs/
+# Slurm stdout/err — track the .out/.err logs (harmless: vLLM/TRL stdout, no secrets),
+# but keep ignoring anything else that lands in logs/. Use logs/* (not logs/) so the
+# negations below can re-include files (git won't descend into a fully-excluded dir).
+logs/*
 !logs/.gitkeep
+!logs/*.out
+!logs/*.err
 
 # Model weights — never commit (blows the 80 GB quota)
 *.safetensors

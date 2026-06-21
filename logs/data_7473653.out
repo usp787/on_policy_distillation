@@ -1,0 +1,11 @@
+[train] loading HuggingFaceH4/MATH (target 4000 prompts)
+Generating train split:   0%|          | 0/746 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 746/746 [00:00<00:00, 7372.91 examples/s]
+Generating test split:   0%|          | 0/546 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 546/546 [00:00<00:00, 34918.96 examples/s]
+  wrote   746 rows -> /home/zha.j/on_policy_distillation/data/train_math.json
+[eval] loading aime24 <- HuggingFaceH4/aime_2024
+Generating train split:   0%|          | 0/30 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 30/30 [00:00<00:00, 225.91 examples/s]
+  wrote    30 rows -> /home/zha.j/on_policy_distillation/data/aime24.json
+[eval] loading aime25 <- yentinglin/aime_2025
+Generating train split:   0%|          | 0/30 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 30/30 [00:00<00:00, 767.65 examples/s]
+  wrote    30 rows -> /home/zha.j/on_policy_distillation/data/aime25.json
+done.

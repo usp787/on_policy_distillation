@@ -1,0 +1,24 @@
+ERROR: Unable to locate a modulefile for 'cuda/12.4'
+Requirement already satisfied: pip in /home/zha.j/.venvs/opd/lib/python3.9/site-packages (21.2.3)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 21.2.3
+    Uninstalling pip-21.2.3:
+      Successfully uninstalled pip-21.2.3
+Successfully installed pip-26.0.1
+Collecting torch>=2.4 (from -r requirements.txt (line 2))
+  Downloading torch-2.8.0-cp39-cp39-manylinux_2_28_x86_64.whl.metadata (30 kB)
+Collecting transformers>=4.51 (from -r requirements.txt (line 3))
+  Downloading transformers-4.57.6-py3-none-any.whl.metadata (43 kB)
+Collecting trl>=0.12 (from -r requirements.txt (line 4))
+  Downloading trl-0.24.0-py3-none-any.whl.metadata (11 kB)
+Collecting peft>=0.13 (from -r requirements.txt (line 5))
+  Downloading peft-0.17.1-py3-none-any.whl.metadata (14 kB)
+Collecting accelerate>=1.0 (from -r requirements.txt (line 6))
+  Downloading accelerate-1.10.1-py3-none-any.whl.metadata (19 kB)
+Collecting datasets>=3.0 (from -r requirements.txt (line 7))
+  Downloading datasets-4.5.0-py3-none-any.whl.metadata (19 kB)
+Collecting vllm>=0.8.5 (from -r requirements.txt (line 8))
+  Downloading vllm-0.11.0-cp38-abi3-manylinux1_x86_64.whl.metadata (17 kB)

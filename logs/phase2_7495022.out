@@ -1,0 +1,141 @@
+{'loss': 0.7839, 'grad_norm': 7.424940586090088, 'learning_rate': 1e-06, 'epoch': 0.0}
+{'loss': 0.65, 'grad_norm': 4.975735187530518, 'learning_rate': 9.9e-07, 'epoch': 0.0}
+{'loss': 0.6448, 'grad_norm': 5.413356304168701, 'learning_rate': 9.8e-07, 'epoch': 0.01}
+{'loss': 0.6703, 'grad_norm': 4.8763346672058105, 'learning_rate': 9.7e-07, 'epoch': 0.01}
+{'loss': 0.7319, 'grad_norm': 5.28629732131958, 'learning_rate': 9.6e-07, 'epoch': 0.01}
+{'loss': 0.6284, 'grad_norm': 4.839877605438232, 'learning_rate': 9.499999999999999e-07, 'epoch': 0.01}
+{'loss': 0.7046, 'grad_norm': 4.496535778045654, 'learning_rate': 9.399999999999999e-07, 'epoch': 0.01}
+{'loss': 0.7036, 'grad_norm': 4.969252586364746, 'learning_rate': 9.3e-07, 'epoch': 0.02}
+{'loss': 0.6242, 'grad_norm': 4.330070972442627, 'learning_rate': 9.2e-07, 'epoch': 0.02}
+{'loss': 0.6755, 'grad_norm': 4.978939533233643, 'learning_rate': 9.1e-07, 'epoch': 0.02}
+{'loss': 0.7107, 'grad_norm': 4.490566730499268, 'learning_rate': 9e-07, 'epoch': 0.02}
+{'loss': 0.6159, 'grad_norm': 5.055558681488037, 'learning_rate': 8.9e-07, 'epoch': 0.02}
+{'loss': 0.6739, 'grad_norm': 4.1065993309021, 'learning_rate': 8.799999999999999e-07, 'epoch': 0.03}
+{'loss': 0.6462, 'grad_norm': 4.673394680023193, 'learning_rate': 8.699999999999999e-07, 'epoch': 0.03}
+{'loss': 0.5772, 'grad_norm': 3.5183749198913574, 'learning_rate': 8.599999999999999e-07, 'epoch': 0.03}
+{'loss': 0.6731, 'grad_norm': 4.607178211212158, 'learning_rate': 8.499999999999999e-07, 'epoch': 0.03}
+{'loss': 0.6282, 'grad_norm': 3.983427047729492, 'learning_rate': 8.399999999999999e-07, 'epoch': 0.03}
+{'loss': 0.607, 'grad_norm': 4.09304666519165, 'learning_rate': 8.299999999999999e-07, 'epoch': 0.04}
+{'loss': 0.6137, 'grad_norm': 4.3297038078308105, 'learning_rate': 8.199999999999999e-07, 'epoch': 0.04}
+{'loss': 0.6709, 'grad_norm': 4.382684230804443, 'learning_rate': 8.1e-07, 'epoch': 0.04}
+{'loss': 0.6701, 'grad_norm': 4.422265529632568, 'learning_rate': 8e-07, 'epoch': 0.04}
+{'loss': 0.5775, 'grad_norm': 3.783980369567871, 'learning_rate': 7.9e-07, 'epoch': 0.04}
+{'loss': 0.6839, 'grad_norm': 4.532115459442139, 'learning_rate': 7.799999999999999e-07, 'epoch': 0.05}
+{'loss': 0.5786, 'grad_norm': 3.888056993484497, 'learning_rate': 7.699999999999999e-07, 'epoch': 0.05}
+{'loss': 0.6412, 'grad_norm': 4.002933979034424, 'learning_rate': 7.599999999999999e-07, 'epoch': 0.05}
+{'loss': 0.5917, 'grad_norm': 4.404175281524658, 'learning_rate': 7.5e-07, 'epoch': 0.05}
+{'loss': 0.6299, 'grad_norm': 4.189250469207764, 'learning_rate': 7.4e-07, 'epoch': 0.05}
+{'loss': 0.6165, 'grad_norm': 4.013645648956299, 'learning_rate': 7.3e-07, 'epoch': 0.06}
+{'loss': 0.5654, 'grad_norm': 3.5440967082977295, 'learning_rate': 7.2e-07, 'epoch': 0.06}
+{'loss': 0.6027, 'grad_norm': 4.230746746063232, 'learning_rate': 7.1e-07, 'epoch': 0.06}
+{'loss': 0.6532, 'grad_norm': 4.493555545806885, 'learning_rate': 7e-07, 'epoch': 0.06}
+{'loss': 0.6782, 'grad_norm': 4.317997932434082, 'learning_rate': 6.9e-07, 'epoch': 0.06}
+{'loss': 0.6041, 'grad_norm': 4.232144832611084, 'learning_rate': 6.800000000000001e-07, 'epoch': 0.07}
+{'loss': 0.6037, 'grad_norm': 3.847289800643921, 'learning_rate': 6.7e-07, 'epoch': 0.07}
+{'loss': 0.612, 'grad_norm': 3.967050552368164, 'learning_rate': 6.6e-07, 'epoch': 0.07}
+{'loss': 0.5642, 'grad_norm': 3.8554751873016357, 'learning_rate': 6.5e-07, 'epoch': 0.07}
+{'loss': 0.5692, 'grad_norm': 4.110489368438721, 'learning_rate': 6.4e-07, 'epoch': 0.07}
+{'loss': 0.6034, 'grad_norm': 4.254878044128418, 'learning_rate': 6.3e-07, 'epoch': 0.08}
+{'loss': 0.573, 'grad_norm': 4.134368419647217, 'learning_rate': 6.2e-07, 'epoch': 0.08}
+{'loss': 0.5808, 'grad_norm': 3.961156129837036, 'learning_rate': 6.1e-07, 'epoch': 0.08}
+{'loss': 0.6923, 'grad_norm': 4.42680549621582, 'learning_rate': 6e-07, 'epoch': 0.08}
+{'loss': 0.5976, 'grad_norm': 4.303886413574219, 'learning_rate': 5.9e-07, 'epoch': 0.08}
+{'loss': 0.5772, 'grad_norm': 3.788121223449707, 'learning_rate': 5.8e-07, 'epoch': 0.09}
+{'loss': 0.6008, 'grad_norm': 3.484236717224121, 'learning_rate': 5.699999999999999e-07, 'epoch': 0.09}
+{'loss': 0.5738, 'grad_norm': 3.322563648223877, 'learning_rate': 5.6e-07, 'epoch': 0.09}
+{'loss': 0.6418, 'grad_norm': 3.8842785358428955, 'learning_rate': 5.5e-07, 'epoch': 0.09}
+{'loss': 0.6446, 'grad_norm': 4.358774662017822, 'learning_rate': 5.4e-07, 'epoch': 0.09}
+{'loss': 0.5431, 'grad_norm': 4.21635103225708, 'learning_rate': 5.3e-07, 'epoch': 0.1}
+{'loss': 0.6344, 'grad_norm': 3.655409574508667, 'learning_rate': 5.2e-07, 'epoch': 0.1}
+{'loss': 0.582, 'grad_norm': 3.479184865951538, 'learning_rate': 5.1e-07, 'epoch': 0.1}
+{'loss': 0.5817, 'grad_norm': 3.69730806350708, 'learning_rate': 5e-07, 'epoch': 0.1}
+{'loss': 0.5961, 'grad_norm': 3.647203207015991, 'learning_rate': 4.9e-07, 'epoch': 0.1}
+{'loss': 0.573, 'grad_norm': 3.3176746368408203, 'learning_rate': 4.8e-07, 'epoch': 0.11}
+{'loss': 0.6803, 'grad_norm': 4.159003734588623, 'learning_rate': 4.6999999999999995e-07, 'epoch': 0.11}
+{'loss': 0.5693, 'grad_norm': 3.442014694213867, 'learning_rate': 4.6e-07, 'epoch': 0.11}
+{'loss': 0.5844, 'grad_norm': 3.4088809490203857, 'learning_rate': 4.5e-07, 'epoch': 0.11}
+{'loss': 0.6235, 'grad_norm': 3.741417646408081, 'learning_rate': 4.3999999999999997e-07, 'epoch': 0.11}
+{'loss': 0.5546, 'grad_norm': 3.73429536819458, 'learning_rate': 4.2999999999999996e-07, 'epoch': 0.12}
+{'loss': 0.5303, 'grad_norm': 3.49396014213562, 'learning_rate': 4.1999999999999995e-07, 'epoch': 0.12}
+{'loss': 0.5859, 'grad_norm': 3.8374948501586914, 'learning_rate': 4.0999999999999994e-07, 'epoch': 0.12}
+{'loss': 0.5218, 'grad_norm': 3.378239870071411, 'learning_rate': 4e-07, 'epoch': 0.12}
+{'loss': 0.5234, 'grad_norm': 3.4382359981536865, 'learning_rate': 3.8999999999999997e-07, 'epoch': 0.12}
+{'loss': 0.5858, 'grad_norm': 4.097331523895264, 'learning_rate': 3.7999999999999996e-07, 'epoch': 0.13}
+{'loss': 0.5443, 'grad_norm': 3.5827977657318115, 'learning_rate': 3.7e-07, 'epoch': 0.13}
+{'loss': 0.6324, 'grad_norm': 3.874547004699707, 'learning_rate': 3.6e-07, 'epoch': 0.13}
+{'loss': 0.5391, 'grad_norm': 3.9856724739074707, 'learning_rate': 3.5e-07, 'epoch': 0.13}
+{'loss': 0.5845, 'grad_norm': 3.6929078102111816, 'learning_rate': 3.4000000000000003e-07, 'epoch': 0.13}
+{'loss': 0.5276, 'grad_norm': 3.421693801879883, 'learning_rate': 3.3e-07, 'epoch': 0.14}
+{'loss': 0.5532, 'grad_norm': 3.293316602706909, 'learning_rate': 3.2e-07, 'epoch': 0.14}
+{'loss': 0.5776, 'grad_norm': 4.176451683044434, 'learning_rate': 3.1e-07, 'epoch': 0.14}
+{'loss': 0.6078, 'grad_norm': 4.31752347946167, 'learning_rate': 3e-07, 'epoch': 0.14}
+{'loss': 0.5351, 'grad_norm': 3.7081079483032227, 'learning_rate': 2.9e-07, 'epoch': 0.14}
+{'loss': 0.5273, 'grad_norm': 3.445037364959717, 'learning_rate': 2.8e-07, 'epoch': 0.15}
+{'loss': 0.5486, 'grad_norm': 3.7361996173858643, 'learning_rate': 2.7e-07, 'epoch': 0.15}
+{'loss': 0.5769, 'grad_norm': 4.427253723144531, 'learning_rate': 2.6e-07, 'epoch': 0.15}
+{'loss': 0.5868, 'grad_norm': 5.19999885559082, 'learning_rate': 2.5e-07, 'epoch': 0.15}
+{'loss': 0.5408, 'grad_norm': 4.120901107788086, 'learning_rate': 2.4e-07, 'epoch': 0.15}
+{'loss': 0.6216, 'grad_norm': 4.456951141357422, 'learning_rate': 2.3e-07, 'epoch': 0.16}
+{'loss': 0.552, 'grad_norm': 4.586091995239258, 'learning_rate': 2.1999999999999998e-07, 'epoch': 0.16}
+{'loss': 0.5069, 'grad_norm': 4.135863780975342, 'learning_rate': 2.0999999999999997e-07, 'epoch': 0.16}
+{'loss': 0.5098, 'grad_norm': 4.148253917694092, 'learning_rate': 2e-07, 'epoch': 0.16}
+{'loss': 0.5034, 'grad_norm': 4.156318664550781, 'learning_rate': 1.8999999999999998e-07, 'epoch': 0.16}
+{'loss': 0.5424, 'grad_norm': 4.7020697593688965, 'learning_rate': 1.8e-07, 'epoch': 0.17}
+{'loss': 0.4983, 'grad_norm': 3.8003194332122803, 'learning_rate': 1.7000000000000001e-07, 'epoch': 0.17}
+{'loss': 0.516, 'grad_norm': 3.9943931102752686, 'learning_rate': 1.6e-07, 'epoch': 0.17}
+{'loss': 0.6247, 'grad_norm': 5.046652793884277, 'learning_rate': 1.5e-07, 'epoch': 0.17}
+{'loss': 0.5277, 'grad_norm': 4.477217197418213, 'learning_rate': 1.4e-07, 'epoch': 0.17}
+{'loss': 0.4819, 'grad_norm': 4.23261833190918, 'learning_rate': 1.3e-07, 'epoch': 0.18}
+{'loss': 0.5603, 'grad_norm': 4.8540730476379395, 'learning_rate': 1.2e-07, 'epoch': 0.18}
+{'loss': 0.5305, 'grad_norm': 4.356324195861816, 'learning_rate': 1.0999999999999999e-07, 'epoch': 0.18}
+{'loss': 0.4922, 'grad_norm': 3.856241464614868, 'learning_rate': 1e-07, 'epoch': 0.18}
+{'loss': 0.5716, 'grad_norm': 5.141427516937256, 'learning_rate': 9e-08, 'epoch': 0.18}
+{'loss': 0.4895, 'grad_norm': 4.305334568023682, 'learning_rate': 8e-08, 'epoch': 0.19}
+{'loss': 0.5338, 'grad_norm': 4.50527286529541, 'learning_rate': 7e-08, 'epoch': 0.19}
+{'loss': 0.5264, 'grad_norm': 4.639284610748291, 'learning_rate': 6e-08, 'epoch': 0.19}
+{'loss': 0.5616, 'grad_norm': 4.518975734710693, 'learning_rate': 5e-08, 'epoch': 0.19}
+{'loss': 0.5616, 'grad_norm': 4.194174766540527, 'learning_rate': 4e-08, 'epoch': 0.19}
+{'loss': 0.5035, 'grad_norm': 4.206272602081299, 'learning_rate': 3e-08, 'epoch': 0.2}
+{'loss': 0.5485, 'grad_norm': 3.887493133544922, 'learning_rate': 2e-08, 'epoch': 0.2}
+{'loss': 0.5215, 'grad_norm': 4.624666690826416, 'learning_rate': 1e-08, 'epoch': 0.2}
+{'train_runtime': 956.8784, 'train_samples_per_second': 0.836, 'train_steps_per_second': 0.105, 'train_loss': 0.5919854012131691, 'epoch': 0.2}
+[gkd] saved adapter -> checkpoints/phase2_distill  (teacher=Qwen/Qwen3-30B-A3B-Instruct-2507)
+INFO 06-08 17:56:19 [__init__.py:216] Automatically detected platform cuda.
+[eval] merging LoRA adapter checkpoints/phase2_distill into base Qwen/Qwen3-4B-Instruct-2507 -> /scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged (CPU)
+[eval] merged model written -> /scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged
+INFO 06-08 17:57:01 [utils.py:233] non-default args: {'trust_remote_code': True, 'disable_log_stats': True, 'model': '/scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged'}
+INFO 06-08 17:57:01 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 06-08 17:57:01 [model.py:1510] Using max model len 262144
+INFO 06-08 17:57:02 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 06-08 17:57:02 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 06-08 17:57:11 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:13 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:13 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='/scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged', speculative_config=None, tokenizer='/scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=262144, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=/scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:17 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m WARNING 06-08 17:57:17 [topk_topp_sampler.py:66] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:18 [gpu_model_runner.py:2602] Starting to load model /scratch/zha.j/hf_cache/opd_merged/phase2_distill_merged...
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:18 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:18 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:36 [default_loader.py:267] Loading weights took 17.70 seconds
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:36 [gpu_model_runner.py:2653] Model loading took 7.6065 GiB and 17.963115 seconds
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:46 [backends.py:548] Using cache directory: /home/zha.j/.cache/vllm/torch_compile_cache/7aeeb78e6a/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:46 [backends.py:559] Dynamo bytecode transform time: 9.62 s
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:57:56 [backends.py:197] Cache the graph for dynamic shape for later use
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:20 [backends.py:218] Compiling a graph for dynamic shape takes 33.60 s
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:34 [monitor.py:34] torch.compile takes 43.22 s in total
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:36 [gpu_worker.py:298] Available KV cache memory: 112.46 GiB
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:36 [kv_cache_utils.py:1087] GPU KV cache size: 818,880 tokens
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:36 [kv_cache_utils.py:1091] Maximum concurrency for 262,144 tokens per request: 3.12x
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:41 [gpu_model_runner.py:3480] Graph capturing finished in 5 secs, took -0.66 GiB
+[1;36m(EngineCore_DP0 pid=4123673)[0;0m INFO 06-08 17:58:41 [core.py:210] init engine (profile, create kv cache, warmup model) took 64.93 seconds
+INFO 06-08 17:58:42 [llm.py:306] Supported_tasks: ['generate']
+[eval] aime24: 53.33%  (n=30, truncated=30.0%)
+[eval] aime25: 33.33%  (n=30, truncated=30.0%)
+[eval] combined: 43.33%  (n=60)
+[eval] wrote results/phase2_checkpoints_phase2_distill.json

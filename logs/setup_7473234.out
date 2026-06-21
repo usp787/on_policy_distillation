@@ -1,0 +1,496 @@
+Channels:
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
+Solving environment: / - done
+
+## Package Plan ##
+
+  environment location: /home/zha.j/.conda/envs/opd
+
+  added / updated specs:
+    - python=3.11
+
+
+The following NEW packages will be INSTALLED:
+
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-20_gnu 
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-hda65f42_9 
+  ca-certificates    conda-forge/noarch::ca-certificates-2026.5.20-hbd8a1cb_0 
+  ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.45.1-default_hbd61a6d_102 
+  libexpat           conda-forge/linux-64::libexpat-2.8.1-hecca717_0 
+  libffi             conda-forge/linux-64::libffi-3.5.2-h3435931_0 
+  libgcc             conda-forge/linux-64::libgcc-15.2.0-he0feb66_19 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-15.2.0-h69a702a_19 
+  libgomp            conda-forge/linux-64::libgomp-15.2.0-he0feb66_19 
+  liblzma            conda-forge/linux-64::liblzma-5.8.3-hb03c661_0 
+  libnsl             conda-forge/linux-64::libnsl-2.0.1-hb9d3cd8_1 
+  libsqlite          conda-forge/linux-64::libsqlite-3.53.2-h0c1763c_0 
+  libuuid            conda-forge/linux-64::libuuid-2.42.1-h5347b49_0 
+  libxcrypt          conda-forge/linux-64::libxcrypt-4.4.36-hd590300_1 
+  libzlib            conda-forge/linux-64::libzlib-1.3.2-h25fd6f3_2 
+  ncurses            conda-forge/linux-64::ncurses-6.6-hdb14827_0 
+  openssl            conda-forge/linux-64::openssl-3.6.2-h35e630c_0 
+  packaging          conda-forge/noarch::packaging-26.2-pyhc364b38_0 
+  pip                conda-forge/noarch::pip-26.1.2-pyh8b19718_0 
+  python             conda-forge/linux-64::python-3.11.15-hd63d673_0_cpython 
+  readline           conda-forge/linux-64::readline-8.3-h853b02a_0 
+  setuptools         conda-forge/noarch::setuptools-82.0.1-pyh332efcf_0 
+  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h366c992_103 
+  tzdata             conda-forge/noarch::tzdata-2025c-hc9c84f9_1 
+  wheel              conda-forge/noarch::wheel-0.47.0-pyhd8ed1ab_0 
+  zstd               conda-forge/linux-64::zstd-1.5.7-hb78ec9c_6 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: | / - \ done
+Verifying transaction: / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | done
+Executing transaction: - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ done
+#
+# To activate this environment, use
+#
+#     $ conda activate /home/zha.j/.conda/envs/opd
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Requirement already satisfied: pip in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (26.1.2)
+Collecting torch==2.8.0 (from -r requirements.txt (line 6))
+  Downloading torch-2.8.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (30 kB)
+Collecting transformers==4.57.6 (from -r requirements.txt (line 7))
+  Using cached transformers-4.57.6-py3-none-any.whl.metadata (43 kB)
+Collecting trl==0.24.0 (from -r requirements.txt (line 8))
+  Using cached trl-0.24.0-py3-none-any.whl.metadata (11 kB)
+Collecting peft==0.17.1 (from -r requirements.txt (line 9))
+  Using cached peft-0.17.1-py3-none-any.whl.metadata (14 kB)
+Collecting accelerate==1.10.1 (from -r requirements.txt (line 10))
+  Using cached accelerate-1.10.1-py3-none-any.whl.metadata (19 kB)
+Collecting datasets==4.5.0 (from -r requirements.txt (line 11))
+  Using cached datasets-4.5.0-py3-none-any.whl.metadata (19 kB)
+Collecting vllm==0.11.0 (from -r requirements.txt (line 12))
+  Using cached vllm-0.11.0-cp38-abi3-manylinux1_x86_64.whl.metadata (17 kB)
+Requirement already satisfied: math-verify in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from -r requirements.txt (line 13)) (0.9.0)
+Requirement already satisfied: pyyaml>=6.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from -r requirements.txt (line 14)) (6.0.3)
+Requirement already satisfied: filelock in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch==2.8.0->-r requirements.txt (line 6)) (3.29.1)
+Requirement already satisfied: typing-extensions>=4.10.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch==2.8.0->-r requirements.txt (line 6)) (4.15.0)
+Requirement already satisfied: sympy>=1.13.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch==2.8.0->-r requirements.txt (line 6)) (1.14.0)
+Requirement already satisfied: networkx in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch==2.8.0->-r requirements.txt (line 6)) (3.6.1)
+Requirement already satisfied: jinja2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch==2.8.0->-r requirements.txt (line 6)) (3.1.6)
+Requirement already satisfied: fsspec in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch==2.8.0->-r requirements.txt (line 6)) (2026.4.0)
+Collecting nvidia-cuda-nvrtc-cu12==12.8.93 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cuda_nvrtc_cu12-12.8.93-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cuda-runtime-cu12==12.8.90 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cuda_runtime_cu12-12.8.90-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cuda-cupti-cu12==12.8.90 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cuda_cupti_cu12-12.8.90-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cudnn-cu12==9.10.2.21 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cudnn_cu12-9.10.2.21-py3-none-manylinux_2_27_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cublas-cu12==12.8.4.1 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cublas_cu12-12.8.4.1-py3-none-manylinux_2_27_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cufft-cu12==11.3.3.83 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cufft_cu12-11.3.3.83-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-curand-cu12==10.3.9.90 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_curand_cu12-10.3.9.90-py3-none-manylinux_2_27_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cusolver-cu12==11.7.3.90 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cusolver_cu12-11.7.3.90-py3-none-manylinux_2_27_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cusparse-cu12==12.5.8.93 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cusparse_cu12-12.5.8.93-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cusparselt-cu12==0.7.1 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cusparselt_cu12-0.7.1-py3-none-manylinux2014_x86_64.whl.metadata (7.0 kB)
+Collecting nvidia-nccl-cu12==2.27.3 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_nccl_cu12-2.27.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.0 kB)
+Collecting nvidia-nvtx-cu12==12.8.90 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_nvtx_cu12-12.8.90-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvjitlink-cu12==12.8.93 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_nvjitlink_cu12-12.8.93-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cufile-cu12==1.13.1.3 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading nvidia_cufile_cu12-1.13.1.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting triton==3.4.0 (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading triton-3.4.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (1.7 kB)
+Collecting huggingface-hub<1.0,>=0.34.0 (from transformers==4.57.6->-r requirements.txt (line 7))
+  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: numpy>=1.17 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (2.3.5)
+Requirement already satisfied: packaging>=20.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (26.2)
+Requirement already satisfied: regex!=2019.12.17 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (2026.5.9)
+Requirement already satisfied: requests in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (2.34.2)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (0.22.2)
+Requirement already satisfied: safetensors>=0.4.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (0.7.0)
+Requirement already satisfied: tqdm>=4.27 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from transformers==4.57.6->-r requirements.txt (line 7)) (4.68.1)
+Requirement already satisfied: psutil in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from peft==0.17.1->-r requirements.txt (line 9)) (7.2.2)
+Requirement already satisfied: pyarrow>=21.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from datasets==4.5.0->-r requirements.txt (line 11)) (24.0.0)
+Collecting dill<0.4.1,>=0.3.0 (from datasets==4.5.0->-r requirements.txt (line 11))
+  Downloading dill-0.4.0-py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: pandas in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from datasets==4.5.0->-r requirements.txt (line 11)) (3.0.3)
+Requirement already satisfied: httpx<1.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from datasets==4.5.0->-r requirements.txt (line 11)) (0.28.1)
+Requirement already satisfied: xxhash in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from datasets==4.5.0->-r requirements.txt (line 11)) (3.7.0)
+Collecting multiprocess<0.70.19 (from datasets==4.5.0->-r requirements.txt (line 11))
+  Downloading multiprocess-0.70.18-py311-none-any.whl.metadata (7.5 kB)
+Collecting fsspec (from torch==2.8.0->-r requirements.txt (line 6))
+  Downloading fsspec-2025.10.0-py3-none-any.whl.metadata (10 kB)
+Collecting cachetools (from vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached cachetools-7.1.4-py3-none-any.whl.metadata (5.5 kB)
+Requirement already satisfied: sentencepiece in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.2.1)
+Collecting blake3 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached blake3-1.0.8-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.6 kB)
+Requirement already satisfied: py-cpuinfo in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (9.0.0)
+Requirement already satisfied: protobuf in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (6.33.6)
+Requirement already satisfied: fastapi>=0.115.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.136.3)
+Collecting aiohttp (from vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached aiohttp-3.14.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Requirement already satisfied: openai>=1.99.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (2.41.0)
+Requirement already satisfied: pydantic>=2.11.7 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (2.13.4)
+Requirement already satisfied: prometheus_client>=0.18.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.25.0)
+Requirement already satisfied: pillow in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (12.2.0)
+Requirement already satisfied: prometheus-fastapi-instrumentator>=7.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (8.0.0)
+Requirement already satisfied: tiktoken>=0.6.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.13.0)
+Requirement already satisfied: lm-format-enforcer==0.11.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.11.3)
+Collecting llguidance<0.8.0,>=0.7.11 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading llguidance-0.7.30-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (10 kB)
+Collecting outlines_core==0.2.11 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading outlines_core-0.2.11-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.8 kB)
+Requirement already satisfied: diskcache==5.6.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (5.6.3)
+Requirement already satisfied: lark==1.2.2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (1.2.2)
+Collecting xgrammar==0.1.25 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading xgrammar-0.1.25-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Requirement already satisfied: partial-json-parser in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.2.1.1.post7)
+Requirement already satisfied: pyzmq>=25.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (27.1.0)
+Requirement already satisfied: msgspec in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.21.1)
+Requirement already satisfied: gguf>=0.13.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.19.0)
+Requirement already satisfied: mistral_common>=1.8.2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (1.11.3)
+Requirement already satisfied: opencv-python-headless>=4.11.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (4.13.0.92)
+Requirement already satisfied: einops in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.8.2)
+Collecting compressed-tensors==0.11.0 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading compressed_tensors-0.11.0-py3-none-any.whl.metadata (7.0 kB)
+Collecting depyf==0.19.0 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading depyf-0.19.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting cloudpickle (from vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Requirement already satisfied: watchfiles in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (1.2.0)
+Requirement already satisfied: python-json-logger in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (4.1.0)
+Collecting scipy (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Requirement already satisfied: ninja in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (1.13.0)
+Requirement already satisfied: pybase64 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (1.4.3)
+Collecting cbor2 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached cbor2-6.1.2-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+Requirement already satisfied: setproctitle in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (1.3.7)
+Requirement already satisfied: openai-harmony>=0.0.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from vllm==0.11.0->-r requirements.txt (line 12)) (0.0.8)
+Collecting numba==0.61.2 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading numba-0.61.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.8 kB)
+Collecting ray>=2.48.0 (from ray[cgraph]>=2.48.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading ray-2.55.1-cp311-cp311-manylinux2014_x86_64.whl.metadata (21 kB)
+Collecting torchaudio==2.8.0 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading torchaudio-2.8.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (7.2 kB)
+Collecting torchvision==0.23.0 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading torchvision-0.23.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+Collecting xformers==0.0.32.post1 (from vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading xformers-0.0.32.post1-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (1.1 kB)
+Collecting frozendict (from compressed-tensors==0.11.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading frozendict-2.4.7-py3-none-any.whl.metadata (23 kB)
+Collecting astor (from depyf==0.19.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached astor-0.8.1-py2.py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: interegular>=0.3.2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from lm-format-enforcer==0.11.3->vllm==0.11.0->-r requirements.txt (line 12)) (0.3.3)
+Collecting llvmlite<0.45,>=0.44.0dev0 (from numba==0.61.2->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading llvmlite-0.44.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.8 kB)
+Collecting numpy>=1.17 (from transformers==4.57.6->-r requirements.txt (line 7))
+  Downloading numpy-2.2.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+Requirement already satisfied: setuptools>=40.8.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from triton==3.4.0->torch==2.8.0->-r requirements.txt (line 6)) (81.0.0)
+Collecting anyio (from httpx<1.0.0->datasets==4.5.0->-r requirements.txt (line 11))
+  Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting certifi (from httpx<1.0.0->datasets==4.5.0->-r requirements.txt (line 11))
+  Using cached certifi-2026.5.20-py3-none-any.whl.metadata (2.5 kB)
+Requirement already satisfied: httpcore==1.* in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from httpx<1.0.0->datasets==4.5.0->-r requirements.txt (line 11)) (1.0.9)
+Requirement already satisfied: idna in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from httpx<1.0.0->datasets==4.5.0->-r requirements.txt (line 11)) (3.18)
+Requirement already satisfied: h11>=0.16 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from httpcore==1.*->httpx<1.0.0->datasets==4.5.0->-r requirements.txt (line 11)) (0.16.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from huggingface-hub<1.0,>=0.34.0->transformers==4.57.6->-r requirements.txt (line 7)) (1.5.0)
+Requirement already satisfied: latex2sympy2_extended==1.11.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from math-verify->-r requirements.txt (line 13)) (1.11.0)
+Collecting antlr4-python3-runtime<=4.13.2,>=4.9.3 (from latex2sympy2_extended==1.11.0->math-verify->-r requirements.txt (line 13))
+  Using cached antlr4_python3_runtime-4.13.2-py3-none-any.whl.metadata (304 bytes)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached aiohappyeyeballs-2.6.2-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting attrs>=17.3.0 (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Requirement already satisfied: frozenlist>=1.1.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12)) (1.8.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12)) (6.7.1)
+Requirement already satisfied: propcache>=0.2.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12)) (0.5.2)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from aiohttp->vllm==0.11.0->-r requirements.txt (line 12)) (1.24.2)
+Requirement already satisfied: starlette>=0.46.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi>=0.115.0->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (1.2.1)
+Requirement already satisfied: typing-inspection>=0.4.2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi>=0.115.0->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.4.2)
+Collecting annotated-doc>=0.0.2 (from fastapi>=0.115.0->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Requirement already satisfied: fastapi-cli>=0.0.8 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.0.24)
+Requirement already satisfied: fastar>=0.9.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.11.0)
+Requirement already satisfied: python-multipart>=0.0.18 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.0.32)
+Requirement already satisfied: email-validator>=2.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (2.3.0)
+Requirement already satisfied: uvicorn>=0.12.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.49.0)
+Requirement already satisfied: pydantic-settings>=2.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (2.14.1)
+Requirement already satisfied: pydantic-extra-types>=2.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (2.11.1)
+Requirement already satisfied: dnspython>=2.0.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from email-validator>=2.0.0->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (2.8.0)
+Requirement already satisfied: typer>=0.16.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.25.1)
+Requirement already satisfied: rich-toolkit>=0.14.8 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.20.1)
+Requirement already satisfied: fastapi-cloud-cli>=0.1.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.19.0)
+Requirement already satisfied: rignore>=0.5.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.7.6)
+Requirement already satisfied: sentry-sdk>=2.20.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (2.61.1)
+Requirement already satisfied: detect-installer>=0.1.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.1.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from jinja2->torch==2.8.0->-r requirements.txt (line 6)) (3.0.3)
+Requirement already satisfied: jsonschema>=4.21.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (4.26.0)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.11.7->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: pydantic-core==2.46.4 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from pydantic>=2.11.7->vllm==0.11.0->-r requirements.txt (line 12)) (2.46.4)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from jsonschema>=4.21.1->mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from jsonschema>=4.21.1->mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (0.37.0)
+Requirement already satisfied: rpds-py>=0.25.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from jsonschema>=4.21.1->mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (2026.5.1)
+Requirement already satisfied: distro<2,>=1.7.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from openai>=1.99.1->vllm==0.11.0->-r requirements.txt (line 12)) (1.9.0)
+Requirement already satisfied: jiter<1,>=0.10.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from openai>=1.99.1->vllm==0.11.0->-r requirements.txt (line 12)) (0.15.0)
+Requirement already satisfied: sniffio in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from openai>=1.99.1->vllm==0.11.0->-r requirements.txt (line 12)) (1.3.1)
+Requirement already satisfied: pycountry>=23 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from pydantic-extra-types[pycountry]>=2.10.5->mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (26.2.16)
+Requirement already satisfied: python-dotenv>=0.21.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from pydantic-settings>=2.0.0->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (1.2.2)
+Collecting click>=7.0 (from ray>=2.48.0->ray[cgraph]>=2.48.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached click-8.4.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting msgpack<2.0.0,>=1.0.0 (from ray>=2.48.0->ray[cgraph]>=2.48.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading msgpack-1.1.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Collecting cupy-cuda12x (from ray[cgraph]>=2.48.0->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading cupy_cuda12x-14.1.1-cp311-cp311-manylinux2014_x86_64.whl.metadata (2.8 kB)
+Collecting charset_normalizer<4,>=2 (from requests->transformers==4.57.6->-r requirements.txt (line 7))
+  Using cached charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Requirement already satisfied: urllib3<3,>=1.26 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from requests->transformers==4.57.6->-r requirements.txt (line 7)) (2.7.0)
+Requirement already satisfied: rich>=13.7.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (15.0.0)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (2.20.0)
+Requirement already satisfied: mdurl~=0.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.1.2)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from sympy>=1.13.3->torch==2.8.0->-r requirements.txt (line 6)) (1.3.0)
+Requirement already satisfied: shellingham>=1.3.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from typer>=0.16.0->fastapi-cli>=0.0.8->fastapi-cli[standard]>=0.0.8; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (1.5.4)
+Requirement already satisfied: httptools>=0.8.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.8.0)
+Requirement already satisfied: uvloop>=0.15.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (0.22.1)
+Requirement already satisfied: websockets>=10.4 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard]>=0.115.0->vllm==0.11.0->-r requirements.txt (line 12)) (16.0)
+Requirement already satisfied: cuda-pathfinder==1.*,>=1.3.4 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from cupy-cuda12x->ray[cgraph]>=2.48.0->vllm==0.11.0->-r requirements.txt (line 12)) (1.5.5)
+Collecting soundfile>=0.12.1 (from mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading soundfile-0.14.0-py2.py3-none-manylinux_2_28_x86_64.whl.metadata (18 kB)
+Collecting cffi>=1.0 (from soundfile>=0.12.1->mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12))
+  Using cached cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Requirement already satisfied: pycparser in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from cffi>=1.0->soundfile>=0.12.1->mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12)) (3.0)
+Collecting soxr>=0.5.0 (from mistral_common>=1.8.2->mistral_common[audio,image]>=1.8.2->vllm==0.11.0->-r requirements.txt (line 12))
+  Downloading soxr-1.1.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.8 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from pandas->datasets==4.5.0->-r requirements.txt (line 11)) (2.9.0.post0)
+Requirement already satisfied: six>=1.5 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas->datasets==4.5.0->-r requirements.txt (line 11)) (1.17.0)
+Downloading torch-2.8.0-cp311-cp311-manylinux_2_28_x86_64.whl (888.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 888.1/888.1 MB 102.7 MB/s  0:00:05
+Downloading transformers-4.57.6-py3-none-any.whl (12.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 55.6 MB/s  0:00:00
+Downloading trl-0.24.0-py3-none-any.whl (423 kB)
+Downloading peft-0.17.1-py3-none-any.whl (504 kB)
+Downloading accelerate-1.10.1-py3-none-any.whl (374 kB)
+Downloading datasets-4.5.0-py3-none-any.whl (515 kB)
+Downloading vllm-0.11.0-cp38-abi3-manylinux1_x86_64.whl (438.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 438.2/438.2 MB 132.9 MB/s  0:00:02
+Downloading compressed_tensors-0.11.0-py3-none-any.whl (179 kB)
+Downloading depyf-0.19.0-py3-none-any.whl (39 kB)
+Downloading numba-0.61.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 51.1 MB/s  0:00:00
+Downloading nvidia_cublas_cu12-12.8.4.1-py3-none-manylinux_2_27_x86_64.whl (594.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 594.3/594.3 MB 111.8 MB/s  0:00:04
+Downloading nvidia_cuda_cupti_cu12-12.8.90-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (10.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.2/10.2 MB 105.6 MB/s  0:00:00
+Downloading nvidia_cuda_nvrtc_cu12-12.8.93-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (88.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 88.0/88.0 MB 113.6 MB/s  0:00:00
+Downloading nvidia_cuda_runtime_cu12-12.8.90-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (954 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 954.8/954.8 kB 10.1 MB/s  0:00:00
+Downloading nvidia_cudnn_cu12-9.10.2.21-py3-none-manylinux_2_27_x86_64.whl (706.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 706.8/706.8 MB 83.4 MB/s  0:00:06
+Downloading nvidia_cufft_cu12-11.3.3.83-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (193.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 193.1/193.1 MB 96.1 MB/s  0:00:02
+Downloading nvidia_cufile_cu12-1.13.1.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 25.5 MB/s  0:00:00
+Downloading nvidia_curand_cu12-10.3.9.90-py3-none-manylinux_2_27_x86_64.whl (63.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.6/63.6 MB 96.5 MB/s  0:00:00
+Downloading nvidia_cusolver_cu12-11.7.3.90-py3-none-manylinux_2_27_x86_64.whl (267.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 267.5/267.5 MB 106.4 MB/s  0:00:02
+Downloading nvidia_cusparse_cu12-12.5.8.93-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (288.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 288.2/288.2 MB 113.6 MB/s  0:00:02
+Downloading nvidia_cusparselt_cu12-0.7.1-py3-none-manylinux2014_x86_64.whl (287.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 287.2/287.2 MB 129.1 MB/s  0:00:02
+Downloading nvidia_nccl_cu12-2.27.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (322.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 322.4/322.4 MB 120.5 MB/s  0:00:02
+Downloading nvidia_nvjitlink_cu12-12.8.93-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (39.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 39.3/39.3 MB 137.5 MB/s  0:00:00
+Downloading nvidia_nvtx_cu12-12.8.90-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (89 kB)
+Downloading outlines_core-0.2.11-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 45.9 MB/s  0:00:00
+Downloading torchaudio-2.8.0-cp311-cp311-manylinux_2_28_x86_64.whl (4.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 75.0 MB/s  0:00:00
+Downloading torchvision-0.23.0-cp311-cp311-manylinux_2_28_x86_64.whl (8.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.6/8.6 MB 89.9 MB/s  0:00:00
+Downloading triton-3.4.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (155.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.5/155.5 MB 141.9 MB/s  0:00:01
+Downloading xformers-0.0.32.post1-cp39-abi3-manylinux_2_28_x86_64.whl (117.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.2/117.2 MB 148.8 MB/s  0:00:00
+Downloading xgrammar-0.1.25-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.7/8.7 MB 43.2 MB/s  0:00:00
+Downloading dill-0.4.0-py3-none-any.whl (119 kB)
+Downloading fsspec-2025.10.0-py3-none-any.whl (200 kB)
+Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 10.0 MB/s  0:00:00
+Downloading llguidance-0.7.30-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (15.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.0/15.0 MB 100.7 MB/s  0:00:00
+Downloading llvmlite-0.44.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (42.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.4/42.4 MB 114.9 MB/s  0:00:00
+Downloading multiprocess-0.70.18-py311-none-any.whl (144 kB)
+Downloading numpy-2.2.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 72.1 MB/s  0:00:00
+Using cached antlr4_python3_runtime-4.13.2-py3-none-any.whl (144 kB)
+Using cached aiohttp-3.14.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+Using cached aiohappyeyeballs-2.6.2-py3-none-any.whl (15 kB)
+Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached anyio-4.13.0-py3-none-any.whl (114 kB)
+Downloading ray-2.55.1-cp311-cp311-manylinux2014_x86_64.whl (73.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.7/73.7 MB 137.2 MB/s  0:00:00
+Downloading msgpack-1.1.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (426 kB)
+Using cached click-8.4.1-py3-none-any.whl (116 kB)
+Using cached charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (214 kB)
+Using cached certifi-2026.5.20-py3-none-any.whl (134 kB)
+Using cached astor-0.8.1-py2.py3-none-any.whl (27 kB)
+Using cached blake3-1.0.8-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (387 kB)
+Using cached cachetools-7.1.4-py3-none-any.whl (16 kB)
+Using cached cbor2-6.1.2-cp311-cp311-manylinux_2_28_x86_64.whl (468 kB)
+Using cached cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading cupy_cuda12x-14.1.1-cp311-cp311-manylinux2014_x86_64.whl (134.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.0/134.0 MB 129.8 MB/s  0:00:01
+Downloading frozendict-2.4.7-py3-none-any.whl (16 kB)
+Downloading soundfile-0.14.0-py2.py3-none-manylinux_2_28_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 30.6 MB/s  0:00:00
+Using cached cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+Downloading soxr-1.1.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (245 kB)
+Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 132.8 MB/s  0:00:00
+Installing collected packages: nvidia-cusparselt-cu12, antlr4-python3-runtime, triton, outlines_core, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufile-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, msgpack, llvmlite, llguidance, fsspec, frozendict, dill, cloudpickle, click, charset_normalizer, cffi, certifi, cbor2, cachetools, blake3, attrs, astor, anyio, annotated-types, annotated-doc, aiosignal, aiohappyeyeballs, soxr, soundfile, scipy, nvidia-cusparse-cu12, nvidia-cufft-cu12, nvidia-cudnn-cu12, numba, multiprocess, depyf, cupy-cuda12x, aiohttp, nvidia-cusolver-cu12, huggingface-hub, torch, datasets, xformers, transformers, torchvision, torchaudio, ray, accelerate, xgrammar, trl, peft, compressed-tensors, vllm
+  Attempting uninstall: triton
+    Found existing installation: triton 3.6.0
+    Uninstalling triton-3.6.0:
+      Successfully uninstalled triton-3.6.0
+  Attempting uninstall: outlines_core
+    Found existing installation: outlines_core 0.2.14
+    Uninstalling outlines_core-0.2.14:
+      Successfully uninstalled outlines_core-0.2.14
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.3.5
+    Uninstalling numpy-2.3.5:
+      Successfully uninstalled numpy-2.3.5
+  Attempting uninstall: llvmlite
+    Found existing installation: llvmlite 0.47.0
+    Uninstalling llvmlite-0.47.0:
+      Successfully uninstalled llvmlite-0.47.0
+  Attempting uninstall: llguidance
+    Found existing installation: llguidance 1.7.6
+    Uninstalling llguidance-1.7.6:
+      Successfully uninstalled llguidance-1.7.6
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2026.4.0
+    Uninstalling fsspec-2026.4.0:
+      Successfully uninstalled fsspec-2026.4.0
+  Attempting uninstall: dill
+    Found existing installation: dill 0.4.1
+    Uninstalling dill-0.4.1:
+      Successfully uninstalled dill-0.4.1
+  Attempting uninstall: numba
+    Found existing installation: numba 0.65.0
+    Uninstalling numba-0.65.0:
+      Successfully uninstalled numba-0.65.0
+  Attempting uninstall: multiprocess
+    Found existing installation: multiprocess 0.70.19
+    Uninstalling multiprocess-0.70.19:
+      Successfully uninstalled multiprocess-0.70.19
+  Attempting uninstall: depyf
+    Found existing installation: depyf 0.20.0
+    Uninstalling depyf-0.20.0:
+      Successfully uninstalled depyf-0.20.0
+  Attempting uninstall: huggingface-hub
+    Found existing installation: huggingface_hub 1.18.0
+    Uninstalling huggingface_hub-1.18.0:
+      Successfully uninstalled huggingface_hub-1.18.0
+  Attempting uninstall: torch
+    Found existing installation: torch 2.11.0
+    Uninstalling torch-2.11.0:
+      Successfully uninstalled torch-2.11.0
+  Attempting uninstall: datasets
+    Found existing installation: datasets 5.0.0
+    Uninstalling datasets-5.0.0:
+      Successfully uninstalled datasets-5.0.0
+  Attempting uninstall: transformers
+    Found existing installation: transformers 5.10.2
+    Uninstalling transformers-5.10.2:
+      Successfully uninstalled transformers-5.10.2
+  Attempting uninstall: torchvision
+    Found existing installation: torchvision 0.26.0
+    Uninstalling torchvision-0.26.0:
+      Successfully uninstalled torchvision-0.26.0
+  Attempting uninstall: torchaudio
+    Found existing installation: torchaudio 2.11.0
+    Uninstalling torchaudio-2.11.0:
+      Successfully uninstalled torchaudio-2.11.0
+  Attempting uninstall: xgrammar
+    Found existing installation: xgrammar 0.2.1
+    Uninstalling xgrammar-0.2.1:
+      Successfully uninstalled xgrammar-0.2.1
+  Attempting uninstall: trl
+    Found existing installation: trl 1.5.1
+    Uninstalling trl-1.5.1:
+      Successfully uninstalled trl-1.5.1
+  Attempting uninstall: peft
+    Found existing installation: peft 0.19.1
+    Uninstalling peft-0.19.1:
+      Successfully uninstalled peft-0.19.1
+  Attempting uninstall: compressed-tensors
+    Found existing installation: compressed-tensors 0.15.0.1
+    Uninstalling compressed-tensors-0.15.0.1:
+      Successfully uninstalled compressed-tensors-0.15.0.1
+  Attempting uninstall: vllm
+    Found existing installation: vllm 0.22.1
+    Uninstalling vllm-0.22.1:
+      Successfully uninstalled vllm-0.22.1
+
+Successfully installed accelerate-1.10.1 aiohappyeyeballs-2.6.2 aiohttp-3.14.0 aiosignal-1.4.0 annotated-doc-0.0.4 annotated-types-0.7.0 antlr4-python3-runtime-4.13.2 anyio-4.13.0 astor-0.8.1 attrs-26.1.0 blake3-1.0.8 cachetools-7.1.4 cbor2-6.1.2 certifi-2026.5.20 cffi-2.0.0 charset_normalizer-3.4.7 click-8.4.1 cloudpickle-3.1.2 compressed-tensors-0.11.0 cupy-cuda12x-14.1.1 datasets-4.5.0 depyf-0.19.0 dill-0.4.0 frozendict-2.4.7 fsspec-2025.10.0 huggingface-hub-0.36.2 llguidance-0.7.30 llvmlite-0.44.0 msgpack-1.1.2 multiprocess-0.70.18 numba-0.61.2 numpy-2.2.6 nvidia-cublas-cu12-12.8.4.1 nvidia-cuda-cupti-cu12-12.8.90 nvidia-cuda-nvrtc-cu12-12.8.93 nvidia-cuda-runtime-cu12-12.8.90 nvidia-cudnn-cu12-9.10.2.21 nvidia-cufft-cu12-11.3.3.83 nvidia-cufile-cu12-1.13.1.3 nvidia-curand-cu12-10.3.9.90 nvidia-cusolver-cu12-11.7.3.90 nvidia-cusparse-cu12-12.5.8.93 nvidia-cusparselt-cu12-0.7.1 nvidia-nccl-cu12-2.27.3 nvidia-nvjitlink-cu12-12.8.93 nvidia-nvtx-cu12-12.8.90 outlines_core-0.2.11 peft-0.17.1 ray-2.55.1 scipy-1.17.1 soundfile-0.14.0 soxr-1.1.0 torch-2.8.0 torchaudio-2.8.0 torchvision-0.23.0 transformers-4.57.6 triton-3.4.0 trl-0.24.0 vllm-0.11.0 xformers-0.0.32.post1 xgrammar-0.1.25
+Collecting flash-attn
+  Using cached flash_attn-2.8.3.tar.gz (8.4 MB)
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: torch in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from flash-attn) (2.8.0)
+Requirement already satisfied: einops in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from flash-attn) (0.8.2)
+Requirement already satisfied: filelock in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (3.29.1)
+Requirement already satisfied: typing-extensions>=4.10.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (4.15.0)
+Requirement already satisfied: sympy>=1.13.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (1.14.0)
+Requirement already satisfied: networkx in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (3.6.1)
+Requirement already satisfied: jinja2 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (3.1.6)
+Requirement already satisfied: fsspec in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (2025.10.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.8.93)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.8.90)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.8.90)
+Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (9.10.2.21)
+Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.8.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (11.3.3.83)
+Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (10.3.9.90)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (11.7.3.90)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.5.8.93)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (0.7.1)
+Requirement already satisfied: nvidia-nccl-cu12==2.27.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (2.27.3)
+Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.8.90)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (12.8.93)
+Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (1.13.1.3)
+Requirement already satisfied: triton==3.4.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from torch->flash-attn) (3.4.0)
+Requirement already satisfied: setuptools>=40.8.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from triton==3.4.0->torch->flash-attn) (81.0.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from sympy>=1.13.3->torch->flash-attn) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages (from jinja2->torch->flash-attn) (3.0.3)
+Building wheels for collected packages: flash-attn
+  Building wheel for flash-attn (pyproject.toml): started
+  Building wheel for flash-attn (pyproject.toml): finished with status 'error'
+Failed to build flash-attn
+flash-attn skipped (optional) — using sdpa
+torch 2.8.0+cu128 cuda True
+vllm 0.11.0 trl 0.24.0 transformers 4.57.6
+Setup complete. Remember to: export HF_HOME=$HOME/hf_cache

@@ -1,0 +1,42 @@
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+flashinfer-python 0.6.11.post2 requires apache-tvm-ffi!=0.1.8,!=0.1.8.post0,<0.2,>=0.1.6, which is not installed.
+quack-kernels 0.5.0 requires apache-tvm-ffi<0.2,>=0.1.6, which is not installed.
+tilelang 0.1.9 requires apache-tvm-ffi>=0.1.2,~=0.1.0, which is not installed.
+tokenspeed-mla 0.1.2 requires apache-tvm-ffi>=0.1.5, which is not installed.
+  error: subprocess-exited-with-error
+  
+  × Building wheel for flash-attn (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [24 lines of output]
+      /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages/wheel/bdist_wheel.py:4: FutureWarning: The 'wheel' package is no longer the canonical location of the 'bdist_wheel' command, and will be removed in a future release. Please update to setuptools v70.1 or later which contains an integrated version of this command.
+        warn(
+      /home/zha.j/.conda/envs/opd/lib/python3.11/site-packages/setuptools/dist.py:765: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+      !!
+      
+              ********************************************************************************
+              Please consider removing the following classifiers in favor of a SPDX license expression:
+      
+              License :: OSI Approved :: BSD License
+      
+              See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+              ********************************************************************************
+      
+      !!
+        self._finalize_license_expression()
+      
+      
+      torch.__version__  = 2.8.0+cu128
+      
+      
+      running bdist_wheel
+      Guessing wheel URL:  https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp311-cp311-linux_x86_64.whl
+      Raw wheel path /home/zha.j/.cache/pip/wheels/42/31/1f/4b22dd7295b3cb064b8fa9038f6d58fb15c9571555b2d7c39c/tmpxxt_71a8/.tmp-r1klba_8/flash_attn-2.8.3-cp311-cp311-linux_x86_64.whl
+      error: [Errno 18] Invalid cross-device link: 'flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp311-cp311-linux_x86_64.whl' -> '/home/zha.j/.cache/pip/wheels/42/31/1f/4b22dd7295b3cb064b8fa9038f6d58fb15c9571555b2d7c39c/tmpxxt_71a8/.tmp-r1klba_8/flash_attn-2.8.3-cp311-cp311-linux_x86_64.whl'
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for flash-attn
+error: failed-wheel-build-for-install
+
+× Failed to build installable wheels for some pyproject.toml based projects
+╰─> flash-attn
