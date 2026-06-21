@@ -1,0 +1,266 @@
+{
+  "model": "checkpoints/phase1_grpo",
+  "max_new_tokens": 8192,
+  "k": 1,
+  "temperature": 0.0,
+  "benchmarks": {
+    "aime24": {
+      "n": 30,
+      "pass@1": 56.67,
+      "truncated_pct": 36.7,
+      "per_problem": [
+        {
+          "answer": "204",
+          "score": 1.0
+        },
+        {
+          "answer": "113",
+          "score": 0.0
+        },
+        {
+          "answer": "371",
+          "score": 0.0
+        },
+        {
+          "answer": "385",
+          "score": 0.0
+        },
+        {
+          "answer": "110",
+          "score": 0.0
+        },
+        {
+          "answer": "104",
+          "score": 0.0
+        },
+        {
+          "answer": "721",
+          "score": 1.0
+        },
+        {
+          "answer": "025",
+          "score": 1.0
+        },
+        {
+          "answer": "809",
+          "score": 1.0
+        },
+        {
+          "answer": "116",
+          "score": 1.0
+        },
+        {
+          "answer": "104",
+          "score": 1.0
+        },
+        {
+          "answer": "294",
+          "score": 1.0
+        },
+        {
+          "answer": "540",
+          "score": 1.0
+        },
+        {
+          "answer": "197",
+          "score": 0.0
+        },
+        {
+          "answer": "480",
+          "score": 1.0
+        },
+        {
+          "answer": "073",
+          "score": 1.0
+        },
+        {
+          "answer": "468",
+          "score": 0.0
+        },
+        {
+          "answer": "601",
+          "score": 0.0
+        },
+        {
+          "answer": "023",
+          "score": 1.0
+        },
+        {
+          "answer": "321",
+          "score": 1.0
+        },
+        {
+          "answer": "211",
+          "score": 0.0
+        },
+        {
+          "answer": "315",
+          "score": 0.0
+        },
+        {
+          "answer": "236",
+          "score": 1.0
+        },
+        {
+          "answer": "045",
+          "score": 1.0
+        },
+        {
+          "answer": "033",
+          "score": 1.0
+        },
+        {
+          "answer": "080",
+          "score": 1.0
+        },
+        {
+          "answer": "055",
+          "score": 1.0
+        },
+        {
+          "answer": "699",
+          "score": 0.0
+        },
+        {
+          "answer": "127",
+          "score": 0.0
+        },
+        {
+          "answer": "902",
+          "score": 0.0
+        }
+      ]
+    },
+    "aime25": {
+      "n": 30,
+      "pass@1": 36.67,
+      "truncated_pct": 36.7,
+      "per_problem": [
+        {
+          "answer": "70",
+          "score": 1.0
+        },
+        {
+          "answer": "588",
+          "score": 0.0
+        },
+        {
+          "answer": "16",
+          "score": 1.0
+        },
+        {
+          "answer": "117",
+          "score": 1.0
+        },
+        {
+          "answer": "279",
+          "score": 0.0
+        },
+        {
+          "answer": "504",
+          "score": 1.0
+        },
+        {
+          "answer": "821",
+          "score": 0.0
+        },
+        {
+          "answer": "77",
+          "score": 1.0
+        },
+        {
+          "answer": "62",
+          "score": 0.0
+        },
+        {
+          "answer": "81",
+          "score": 0.0
+        },
+        {
+          "answer": "259",
+          "score": 0.0
+        },
+        {
+          "answer": "510",
+          "score": 0.0
+        },
+        {
+          "answer": "204",
+          "score": 0.0
+        },
+        {
+          "answer": "60",
+          "score": 0.0
+        },
+        {
+          "answer": "735",
+          "score": 0.0
+        },
+        {
+          "answer": "468",
+          "score": 1.0
+        },
+        {
+          "answer": "49",
+          "score": 1.0
+        },
+        {
+          "answer": "82",
+          "score": 1.0
+        },
+        {
+          "answer": "106",
+          "score": 1.0
+        },
+        {
+          "answer": "336",
+          "score": 0.0
+        },
+        {
+          "answer": "293",
+          "score": 1.0
+        },
+        {
+          "answer": "237",
+          "score": 0.0
+        },
+        {
+          "answer": "610",
+          "score": 0.0
+        },
+        {
+          "answer": "149",
+          "score": 0.0
+        },
+        {
+          "answer": "907",
+          "score": 0.0
+        },
+        {
+          "answer": "113",
+          "score": 0.0
+        },
+        {
+          "answer": "19",
+          "score": 1.0
+        },
+        {
+          "answer": "248",
+          "score": 0.0
+        },
+        {
+          "answer": "104",
+          "score": 0.0
+        },
+        {
+          "answer": "240",
+          "score": 0.0
+        }
+      ]
+    }
+  },
+  "combined": {
+    "n": 60,
+    "pass@1": 46.67
+  }
+}

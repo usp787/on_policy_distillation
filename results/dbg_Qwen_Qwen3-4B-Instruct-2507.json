@@ -1,0 +1,139 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "max_new_tokens": 8192,
+  "k": 1,
+  "temperature": 0.0,
+  "benchmarks": {
+    "aime25": {
+      "n": 30,
+      "pass@1": 43.33,
+      "truncated_pct": 36.7,
+      "per_problem": [
+        {
+          "answer": "70",
+          "score": 1.0
+        },
+        {
+          "answer": "588",
+          "score": 0.0
+        },
+        {
+          "answer": "16",
+          "score": 1.0
+        },
+        {
+          "answer": "117",
+          "score": 1.0
+        },
+        {
+          "answer": "279",
+          "score": 1.0
+        },
+        {
+          "answer": "504",
+          "score": 1.0
+        },
+        {
+          "answer": "821",
+          "score": 0.0
+        },
+        {
+          "answer": "77",
+          "score": 1.0
+        },
+        {
+          "answer": "62",
+          "score": 0.0
+        },
+        {
+          "answer": "81",
+          "score": 0.0
+        },
+        {
+          "answer": "259",
+          "score": 0.0
+        },
+        {
+          "answer": "510",
+          "score": 0.0
+        },
+        {
+          "answer": "204",
+          "score": 0.0
+        },
+        {
+          "answer": "60",
+          "score": 0.0
+        },
+        {
+          "answer": "735",
+          "score": 0.0
+        },
+        {
+          "answer": "468",
+          "score": 1.0
+        },
+        {
+          "answer": "49",
+          "score": 1.0
+        },
+        {
+          "answer": "82",
+          "score": 1.0
+        },
+        {
+          "answer": "106",
+          "score": 1.0
+        },
+        {
+          "answer": "336",
+          "score": 0.0
+        },
+        {
+          "answer": "293",
+          "score": 1.0
+        },
+        {
+          "answer": "237",
+          "score": 1.0
+        },
+        {
+          "answer": "610",
+          "score": 0.0
+        },
+        {
+          "answer": "149",
+          "score": 1.0
+        },
+        {
+          "answer": "907",
+          "score": 0.0
+        },
+        {
+          "answer": "113",
+          "score": 0.0
+        },
+        {
+          "answer": "19",
+          "score": 0.0
+        },
+        {
+          "answer": "248",
+          "score": 0.0
+        },
+        {
+          "answer": "104",
+          "score": 0.0
+        },
+        {
+          "answer": "240",
+          "score": 0.0
+        }
+      ]
+    }
+  },
+  "combined": {
+    "n": 30,
+    "pass@1": 43.33
+  }
+}
