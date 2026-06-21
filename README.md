@@ -431,6 +431,27 @@ Phase 1 needed (the blog reports ~7–10× fewer gradient steps for self-distill
 That step-count ratio — not the absolute score — is the result you're reproducing.
 Plot **AIME vs. gradient step** for Phase 1 and Phase 2 on the same axes.
 
+**Result (measured, 2026-06-21) — flat, a second null.** The run finished 300 steps
+(~0.6 epoch, LoRA r32, FP8 teacher — the bf16 teacher OOM'd at step 138 on the dense
+full-vocab KL tensor; HF-generate decode was so slow the job auto-resumed across ~8 Slurm
+slots, with per-step time ballooning 1.6 s → 600+ s as rollouts lengthened). avg@4 (k=4,
+temp 0.7, 8192 ruler), 60 questions:
+
+| | aime24 | aime25 | combined |
+|---|---|---|---|
+| Baseline 4B | 58.33 | 41.67 | **50.00** |
+| Phase-2 OPD | 53.33 | 44.17 | **48.75** |
+
+The −1.25 combined is within eval noise — the teacher's real +14 AIME25 gap did **not**
+transfer. (The committed *greedy* `phase2_*` JSON, 43.33, is a stale 100-step intermediate
+checkpoint with the bf16 teacher — not the final model; compare only avg@4.) Two suspects,
+both consistent with §1's thesis: (a) the **2048 training cap vs the 8192 eval ruler** —
+on-policy rollouts were truncated during distillation, re-introducing the short-bias the
+eval punishes; (b) **reverse-KL into a rank-32 LoRA on an already-strong student** can only
+mode-seek *within* the student's existing support, so a teacher whose edge lives in
+reasoning the 4B can't represent has little it can actually hand over. Net: like Phase 1,
+no attributable gain.
+
 ---
 
 ## 11. Phase 3 (optional) — distill from an external teacher → your worry, tested
@@ -463,11 +484,20 @@ of distilling.*
 
 ## 12. Reading results / deliverables
 
-> **Progress** (2026-06-08): ✅ env · ✅ data · ✅ **Phase 0 done** (ruler = 8192 tok;
+> **Progress** (2026-06-21): ✅ env · ✅ data · ✅ **Phase 0 done** (ruler = 8192 tok;
 > 4B = 51.67% combined, 8B = 21.67%) · ✅ **Phase 1 done — null result** (RLVR/GRPO:
 > avg@4 50.00 baseline → 48.33, within noise; the 2507 student is already RL-saturated,
-> §9) · ⬜ **Phase 2 (next)** — distill from `Qwen3-30B-A3B-Instruct-2507` (non-thinking,
-> AIME25 61.3 → real +14 gap; the headline run) · ❄️ Phase 3 frozen (30B should carry it).
+> §9) · ✅ **Phase 2 done — flat/null result** (on-policy distill from
+> `Qwen3-30B-A3B-Instruct-2507-FP8`, 300 steps: avg@4 50.00 baseline → **48.75**, within
+> noise — the +14 teacher gap did *not* transfer; suspects = 2048 train-cap vs 8192
+> eval-ruler mismatch + LoRA-r32 capacity, §10) · ❄️ Phase 3 frozen.
+>
+> **Project status:** all three phases land at ~48–52% combined AIME — no attributable
+> movement off baseline. The honest write-up is therefore a **boundary-conditions** study
+> ("when do GRPO / on-policy distillation fail to help?"), not a blog reproduction. See the
+> three measured failure modes in §9 (RL on a saturated student), §10 (reverse-KL into a
+> small LoRA + train/eval length mismatch), and §1/§11 (transfer is bounded by the
+> teacher–student gap *that the student can represent*, not by the act of distilling).
 
 Commit to `results/`:
 
