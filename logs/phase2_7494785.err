@@ -1,22 +1,0 @@
-/home/zha.j/on_policy_distillation/src/train_gkd.py:19: UserWarning: You are importing from 'trl.experimental'. APIs here are unstable and may change or be removed without notice. Silence this warning by setting environment variable TRL_EXPERIMENTAL_SILENCE=1.
-  from trl.experimental.gkd import GKDConfig, GKDTrainer
-Map:   0%|          | 0/4000 [00:00<?, ? examples/s]Map:  35%|███▍      | 1387/4000 [00:00<00:00, 7516.62 examples/s]Map: 100%|██████████| 4000/4000 [00:00<00:00, 15273.63 examples/s]
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 85.84it/s]
-/home/zha.j/.conda/envs/opd/lib/python3.11/site-packages/trl/trainer/gkd_trainer.py:129: UserWarning: This trainer will soon be moved to trl.experimental and is a candidate for removal. If you rely on it and want it to remain, please share your comments here: https://github.com/huggingface/trl/issues/4223. Silence this warning by setting environment variable TRL_EXPERIMENTAL_SILENCE=1.
-  warnings.warn(
-Traceback (most recent call last):
-  File "/home/zha.j/on_policy_distillation/src/train_gkd.py", line 88, in <module>
-    main()
-  File "/home/zha.j/on_policy_distillation/src/train_gkd.py", line 75, in main
-    trainer = GKDTrainer(
-              ^^^^^^^^^^^
-  File "/home/zha.j/.conda/envs/opd/lib/python3.11/site-packages/trl/trainer/gkd_trainer.py", line 198, in __init__
-    self.teacher_model = self.accelerator.prepare_model(teacher_model, evaluation_mode=True)
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/zha.j/.conda/envs/opd/lib/python3.11/site-packages/accelerate/accelerator.py", line 1735, in prepare_model
-    self.verify_device_map(model)
-  File "/home/zha.j/.conda/envs/opd/lib/python3.11/site-packages/accelerate/accelerator.py", line 4184, in verify_device_map
-    for m in model.modules():
-             ^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'modules'

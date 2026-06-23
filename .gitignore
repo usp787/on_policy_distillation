@@ -1,10 +1,10 @@
-# Slurm stdout/err — track the .out/.err logs (harmless: vLLM/TRL stdout, no secrets),
-# but keep ignoring anything else that lands in logs/. Use logs/* (not logs/) so the
-# negations below can re-include files (git won't descend into a fully-excluded dir).
+# Slurm logs: keep only the compact .out (eval results print there); ignore the noisy .err
+# (progress bars/warnings) plus any .log/.jsonl, so the cluster's freshly-generated copies
+# never collide with `git pull` (a tracked file the cluster regenerates blocks the merge).
+# logs/* (not logs/) lets the negations below re-include the files we DO want to keep.
 logs/*
 !logs/.gitkeep
 !logs/*.out
-!logs/*.err
 
 # Model weights — never commit (blows the 80 GB quota)
 *.safetensors
@@ -36,7 +36,11 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Keep results (commit metrics JSON + small plots) — see README §12
+# Results: commit the deliverables (metrics .json + small .png — see README §12), but ignore
+# bulk/regenerated dumps (.jsonl) and any stray .err/.log so they don't block `git pull`.
+results/*.jsonl
+results/*.err
+results/*.log
 !results/
 !results/*.json
 !results/*.png
