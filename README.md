@@ -511,6 +511,46 @@ avg@k (sample k=4 and average) — cheaper than chasing a bigger eval set.
 
 ---
 
+## 13. Post-hoc diagnostic — why Phase 2 didn't transfer (overlap ratio)
+
+After the flat Phase-2 result (§10), a recent paper — Li et al., *Rethinking On-Policy
+Distillation* (THUNLP, **arXiv:2604.13016**) — gave a clean way to test *why*. It shows OPD
+succeeds only when **(i)** student and teacher share compatible **thinking patterns** (high
+overlap of their top-k token sets on student-visited states) and **(ii)** the teacher carries
+genuinely **new knowledge** beyond what the student has — a higher *benchmark score* from a
+same-family, same-recipe teacher is **not** enough. Failed runs show high overlap but a
+per-token distribution the student already matches, so reverse-KL has nothing to push.
+
+`src/diag_overlap.py` (run via `slurm/diag_overlap.sbatch`; light enough for 1× H100, < 1 h)
+reproduces the paper's metrics on our pair: it samples student rollouts, runs one
+teacher-forcing forward pass of both the 4B student and the 30B-A3B teacher over the student's
+own tokens, and averages the alignment metrics over student-visited states.
+
+**Measured** (fresh `Qwen3-4B-Instruct-2507` vs `Qwen3-30B-A3B-Instruct-2507-FP8`; 64 rollouts /
+~57k positions, k=16):
+
+| metric | value | reading |
+|---|---|---|
+| `overlap_ratio` | **0.67** | HIGH (paper: mismatch ≈0.28, healthy 0.55–0.91) → condition (i) satisfied |
+| `entropy_gap` | **0.09** nats | tiny — near-identical, very peaked confidence (both entropies ≈0.20) |
+| mass on shared tokens | **≈99.8%** | on the student's own states, ~all of both models' mass sits on the *same* tokens |
+| `overlap_advantage` | **−0.15** | residual reverse-KL on the shared set — *not* zero |
+
+**Reading.** Condition (i) is clearly **satisfied** (high overlap, matched confidence) — so the
+missing SFT cold-start (the paper's fix for *pattern mismatch*) was never our problem, and
+dropping SFT (§0) was not the mistake. And on the states the student actually visits, the two
+models put ~99.8% of their mass on the **same tokens**: the teacher's +14 AIME edge barely
+surfaces as a token-level distribution the student could absorb on-policy — exactly the paper's
+condition-(ii) failure (a same-family scaled sibling carries little *new* transferable signal).
+**Honest caveats:** `overlap_advantage` is **−0.15, not zero** — there *is* a small residual
+disagreement (comparable to the ~0.20-nat entropy), just diluted across the ~99.8% agreement;
+and this is a single snapshot, not the train-dynamics curve the paper uses to separate
+"converges" from "stagnates." So treat it as strong **corroboration** of the §10 read, not
+proof. It sharpens §1/§11: *what bounds the student is whether the teacher has new knowledge the
+student can represent — not its benchmark score, and not the act of distilling.*
+
+---
+
 ## Appendix A — hand-rolled loop (bonus, no TRL)
 
 This is the version that most closely mirrors the blog's pseudocode and is **faster**
@@ -568,3 +608,6 @@ verifiable reward turns this exact scaffold into your GRPO loop — which is the
   TRL's GKDTrainer implements.
 - Qwen3 Technical Report, 2025; Qwen3-4B-Instruct-2507 / Qwen3-8B model cards.
 - TRL docs: GKDTrainer, GRPOTrainer.
+- Li et al. *Rethinking On-Policy Distillation of Large Language Models: Phenomenology,
+  Mechanism, and Recipe*, 2026 (arXiv:2604.13016; code: github.com/thunlp/OPD) — the two
+  OPD success conditions and the overlap diagnostic reproduced in §13.
