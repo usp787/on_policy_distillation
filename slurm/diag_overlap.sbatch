@@ -4,9 +4,9 @@
 # load the 4B (bf16) + 30B-A3B (FP8, ~31 GB) co-resident, sample 64 short rollouts, then one
 # teacher-forcing forward of each model per rollout. No training. Fits 1× H100 (80 GB) in <1 h,
 # so default to the less-contended `sharing` pool instead of waiting for an H200.
-#SBATCH --partition=sharing
-#SBATCH --gres=gpu:h100:1            # 80 GB: 31 (FP8 teacher) + 8 (4B student) + logits, comfortable
-#SBATCH --time=01:00:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:h200:1
+#SBATCH --time=02:00:00
 #SBATCH --mem=64G
 #SBATCH --output=logs/diag_%j.out
 #SBATCH --error=logs/diag_%j.err
